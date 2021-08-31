@@ -11,7 +11,15 @@
 
 .arena-stats {
   margin: 0 auto;
-  line-height: 9px;
+  line-height: 1 2px;
+}
+
+.ted {
+  line-height: 3px;
+}
+
+.tedh {
+  line-height: 5px;
 }
 
 .table-container {
@@ -28,7 +36,7 @@
 
 table {
   width: 60rem;
-  height: 25rem;
+  height: 30rem;
   align-items: center;
   color: var(--text-color-inset-primary);
   text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
@@ -39,7 +47,7 @@ table {
 th {
   background-color: var(--main-bg-color-inset);
   vertical-align: middle;
-  line-height: 15px;
+  line-height: 35px;
 }
 
 td,
@@ -80,11 +88,19 @@ th {
 @media only screen and (max-width: 750px) {
   table {
     width: 30rem;
+    height: 20rem;
   }
   .arena-stats {
     line-height: 20px;
   }
   th {
     line-height: 25px;
+  }
+  .arena-stats .ted {
+    line-height: 0px;
+  }
+
+  .tedh {
+    line-height: 14px;
   }
 }

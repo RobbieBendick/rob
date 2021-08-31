@@ -56,7 +56,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
             <div className="card-body">
               <h2 className="card-title addon-title">{addonTitle}</h2>
               <p className="addon-description">{addonDescription}</p>
-              <a target="_blank" rel="noopener noreferrer" href={addonSrc} className="addon-link">Get the addon!</a>
+              <a target="_blank" rel="noopener noreferrer" href={addonSrc} className="addon-link">Grab the addon!</a>
             </div>
           </motion.div>
           {!last && <hr id={hr} />}
@@ -68,7 +68,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
             <div className="card-body">
             <h2 className="card-title addon-title">{addonTitle}</h2>
             <p className="addon-description">{addonDescription}</p>
-            <a target="_blank" rel="noopener noreferrer" href={addonSrc} className="addon-link">Get the addon!</a>
+            <a target="_blank" rel="noopener noreferrer" href={addonSrc} className="addon-link">Grab the addon!</a>
             </div>
           </div>
           {!last && <hr id={hr} />}
