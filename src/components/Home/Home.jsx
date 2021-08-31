@@ -50,19 +50,19 @@ function Home() {
     }
   }
   useEffect(() => {
-    let threes = `https://us.api.blizzard.com/data/wow/pvp-season/1/pvp-leaderboard/3v3?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
-    let twos = `https://us.api.blizzard.com/data/wow/pvp-season/1/pvp-leaderboard/2v2?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
+    let threesUrl = `https://us.api.blizzard.com/data/wow/pvp-season/1/pvp-leaderboard/3v3?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
+    let twosUrl = `https://us.api.blizzard.com/data/wow/pvp-season/1/pvp-leaderboard/2v2?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
     async function myFetch(url){
       let response = await fetch(url);
       return await response.json();
     }
     if (wowPlayer3v3Data.length === 0) {
-      myFetch(threes)
+      myFetch(threesUrl)
       .then(res => setWowPlayer3v3Data(res.entries.slice(0,20)));
     }
     if (wowPlayer2v2Data.length === 0) {
-      myFetch(twos)
-      .then(res => setWowPlayer2v2Data(res.entries.slice(0,300)));
+      myFetch(twosUrl)
+      .then(res => setWowPlayer2v2Data(res.entries.slice(0,500)));
     }
   }, [wowPlayer3v3Data, wowPlayer2v2Data]); 
 

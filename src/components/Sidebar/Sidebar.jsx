@@ -27,7 +27,7 @@ function AltListItem({ title, href }) {
   return (
     <li className="sidebar-item">
       <h5 className="sidebar-heading justify-content-between align-items-center mt-4 mb-4">
-        <a href={"#"+href} className={`nav-link sidebar-title ${title}`}>
+        <a href={`#${href}`} className={`nav-link sidebar-title ${title}`}>
           {title}
         </a>
       </h5>
@@ -37,7 +37,7 @@ function AltListItem({ title, href }) {
 
 function ListItem({ title, href }) {
   function smoothScroll() {
-    document.querySelector("#" + href).scrollIntoView({
+    document.querySelector(`#${href}`).scrollIntoView({
       behavior: "smooth",
       block: "end",
     });

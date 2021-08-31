@@ -42,6 +42,14 @@ table {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4), 8px 8px 15px rgba(0, 0, 0, 0.7);
 }
 
+.robdog-border {
+  border: rgb(22, 48, 65) 2.1px solid !important;
+}
+
+.robdog-border td {
+  border: rgb(22, 48, 65) 2.1px solid !important;
+}
+
 th {
   background-color: var(--main-bg-color-inset);
   vertical-align: middle;
@@ -50,7 +58,7 @@ th {
 
 td,
 th {
-  border: 2px solid var(--main-bg-color) !important;
+  border: 2px solid var(--main-bg-color);
 }
 
 .rank {

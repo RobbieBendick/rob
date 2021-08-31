@@ -5,16 +5,16 @@ import { motion } from "framer-motion"
 function ArenaTeam({robdog3v3Team, threesTeam, robdog2v2Team, twosTeam}) {
     
     
-    const ArenaMember = ({name, rating, played, wins, losses, n}) => {
+    const ArenaMember = ({name, rating, played, wins, losses, robdog}) => {
         let winLossRatio = Math.round(wins / played * 100 * 10) / 10;
         return (
-            <tr className="arena-member">
-                <td className={n ? `arena-stats ${n}` : "arena-stats"}>{name}</td>
-                <td className={n ? `arena-stats ${n}` : "arena-stats"}>Rating: {rating}</td>
-                <td className={n ? `arena-stats ${n}` : "arena-stats"}>W: {wins}</td>
-                <td className={n ? `arena-stats ${n}` : "arena-stats"}>L: {losses}</td>
-                <td className={n ? `arena-stats ${n}` : "arena-stats"}>Total: {played}</td>
-                <td className={n ? `arena-stats ${n}` : "arena-stats"}>{winLossRatio}%</td>
+            <tr className={ robdog ? "arena-member robdog-border" : "arena-member"}>
+                <td className={`arena-stats`} >{name}</td>
+                <td className={`arena-stats`}>Rating: {rating}</td>
+                <td className={"arena-stats"}>W: {wins}</td>
+                <td className={"arena-stats"}>L: {losses}</td>
+                <td className={"arena-stats"}>Total: {played}</td>
+                <td className={"arena-stats"}>{winLossRatio}%</td>
             </tr>
         )
     }
@@ -32,7 +32,10 @@ function ArenaTeam({robdog3v3Team, threesTeam, robdog2v2Team, twosTeam}) {
                     <th>W/L: {Math.round(threesTeam.season_match_statistics.won / threesTeam.season_match_statistics.played * 100 * 10) / 10}%</th>
                     <tbody>
                         {robdog3v3Team.members.map((member, index) => (
-                            <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost}/> 
+                            member.character.name === "Robdog" ?
+                             <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={true} />
+                            :
+                            <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={false}/> 
                         ))}
                     </tbody>
                 </table>
@@ -42,15 +45,18 @@ function ArenaTeam({robdog3v3Team, threesTeam, robdog2v2Team, twosTeam}) {
             <motion.div className="table-container" id="divider" style={{"marginTop": "10rem"}} initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
                 <span className="text">rank: {twosTeam.rank} (2v2)</span>
                 <table className="arena-table">
-                    <th className="tedh">{robdog2v2Team.name}</th>
-                    <th className="tedh">Team Rating: {twosTeam.rating}</th>
-                    <th className="tedh">W: {twosTeam.season_match_statistics.won}</th>
-                    <th className="tedh">L: {twosTeam.season_match_statistics.lost}</th>
-                    <th className="tedh">Total: {twosTeam.season_match_statistics.played}</th>
-                    <th className="tedh">W/L: {Math.round(twosTeam.season_match_statistics.won / twosTeam.season_match_statistics.played * 100 * 10) / 10}%</th>
+                    <th className="arena-stats tedh">{robdog2v2Team.name}</th>
+                    <th className="arena-stats tedh">Team Rating: {twosTeam.rating}</th>
+                    <th className="arena-stats tedh">W: {twosTeam.season_match_statistics.won}</th>
+                    <th className="arena-stats tedh">L: {twosTeam.season_match_statistics.lost}</th>
+                    <th className="arena-stats tedh">Total: {twosTeam.season_match_statistics.played}</th>
+                    <th className="arena-stats tedh">W/L: {Math.round(twosTeam.season_match_statistics.won / twosTeam.season_match_statistics.played * 100 * 10) / 10}%</th>
                     <tbody>
                         {robdog2v2Team.members.map((member, index) => (
-                            <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} n="ted"/> 
+                            member.character.name === "Robdog" ?
+                            <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={true} />
+                           :
+                           <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={false}/> 
                         ))}
                     </tbody>
                 </table>

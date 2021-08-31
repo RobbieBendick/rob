@@ -42,11 +42,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
           <p style={{ visibility: "hidden" }}>placeholder</p>
         </div>
       )}
-      <a
-        onClick={() => setToggle(!toggle)}
-        type="button"
-        className="collapsible"
-      >
+      <a onClick={() => setToggle(!toggle)} type="button" className="collapsible">
         {buttons}
       </a>
       {toggle ? (
