@@ -12,7 +12,7 @@ function Sidebar() {
     <nav className="navbar-expand-lg d-none d-md-block sidebar list-unstyled">
       <div className="sidebar-sticky sidebar-content">
         <ul className="nav flex-column mb-2 rob">
-          <AltListItem title="3v3 team" href="map"/>
+          <AltListItem title="3v3 team" href="rob"/>
           <AltListItem title="2v2 team" href="threes-divider"/>
           <ListItem title="ArenaMarker" href="chat" />
           <ListItem title="DarkTheme" href="raidframes" />

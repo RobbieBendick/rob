@@ -8,6 +8,8 @@
   font-size: xx-large;
   padding: 2rem 0;
   text-shadow: var(--text-visibility);
+  text-decoration: underline;
+  text-decoration-thickness: 0.1px;
 }
 
 .rob-addon {
@@ -15,6 +17,8 @@
   color: var(--text-color-inset-primary);
   padding: 3rem 0 2rem 0;
   font-size: xx-large;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1px;
 }
 
 .fa-home {

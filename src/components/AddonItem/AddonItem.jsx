@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/Button";
 
 function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, last }) {
   const [toggle, setToggle] = useState(true);
-  const hr = id === "map" ? "chat" : id;
+  const hr = id === "rob" ? "chat" : id;
   const buttons = [];
   if (toggle) {
     buttons.push(<i className="fas fa-minus"></i>);
@@ -29,7 +29,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
           <i
             style={{
               display: "block",
-              color: "#fff",
+              color: "#c9d1d9",
               fontSize: "10px",
               textShadow: "1.5px 1.5px #0e0e0f",
               marginBottom: "-2px",

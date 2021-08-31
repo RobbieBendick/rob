@@ -7,7 +7,7 @@ function Header() {
   const windowSize = useWindowSize();
 
   function smoothScroll() {
-    document.querySelector("#map").scrollIntoView({
+    document.querySelector("#rob").scrollIntoView({
       behavior: "smooth",
       block: "start",
     });

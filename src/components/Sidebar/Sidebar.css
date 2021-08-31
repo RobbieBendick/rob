@@ -4,19 +4,6 @@
   letter-spacing: 0.5px;
 }
 
-.rob a:not([href]) {
-  cursor: pointer;
-  color: #c9d1d9;
-  text-decoration: none;
-}
-
-.sidebar-title {
-}
-
-ul {
-  padding: 0;
-}
-
 .sidebar-item:not(li:last-child)::after {
   content: '';
   display: block;
@@ -26,6 +13,13 @@ ul {
   margin: 0.42rem auto 0 auto;
   opacity: 1;
 }
-.sidebar-heading {
-  object-fit: fill;
+
+.rob a:not([href]) {
+  cursor: pointer;
+  color: #c9d1d9;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
 }

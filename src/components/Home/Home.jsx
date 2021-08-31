@@ -7,7 +7,7 @@ function Home() {
   const windowSize = useWindowSize();
 
   useEffect(() => {
-    document.title = "Robdog";
+    document.title = "Mageiden";
   });
 
   const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
@@ -22,7 +22,7 @@ function Home() {
   const findRobdog3v3 = () => {
     for(let i=0; i < wowPlayer3v3Data.length; i++){
       if (!('members' in wowPlayer3v3Data[i].team)){
-        // no "Members" key in team array, move onto the next team
+        // no "members" key in team array, move onto the next team
         i++;
         continue;
       }
@@ -103,10 +103,10 @@ function HomeView({
   twosTeam}) {
 
   return (
-    <div id="map" className="pad">
+    <div id="rob" className="pad">
       
       <div className="robdog">
-        Robdog's Arenas
+        Mageiden's Active Teams
       </div>
       <ArenaTeam wowPlayer3v3Data={wowPlayer3v3Data} 
       robdog3v3Team={robdog3v3Team} 
@@ -117,7 +117,7 @@ function HomeView({
       <hr id="content-seperator"/>
 
       <h1 className="rob-addon">
-        Robdog's Addons
+        Mageiden's Addons
       </h1>
       <ul>
         <AddonItem
@@ -126,7 +126,7 @@ function HomeView({
           addonSrc="https://www.curseforge.com/wow/addons/arenamarker"
           addonDescription="When you enter arena, gives you and your party members Raid Target Markers based on their class. In the case of duplicate classes, it will select an alternate marker."
           key="1"
-          id="map"
+          id="rob"
           alt="addonmarker-img"
         />
         <AddonItem

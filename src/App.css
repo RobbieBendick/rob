@@ -20,3 +20,11 @@
 body {
   text-align: center;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body:not(.sidebar) {
+  font-family: 'Signika Negative', sans-serif;
+}

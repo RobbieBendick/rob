@@ -8,12 +8,12 @@ function ArenaTeam({robdog3v3Team, threesTeam, robdog2v2Team, twosTeam}) {
         let winLossRatio = Math.round(wins / played * 100 * 10) / 10;
         return (
             <tr className="arena-member">
-                <td className={n ? "arena-stats " + n : "arena-stats"}>{name}</td>
-                <td className={n ? "arena-stats " + n : "arena-stats"}>Rating: {rating}</td>
-                <td className={n ? "arena-stats " + n : "arena-stats"}>W: {wins}</td>
-                <td className={n ? "arena-stats " + n : "arena-stats"}>L: {losses}</td>
-                <td className={n ? "arena-stats " + n : "arena-stats"}>Total: {played}</td>
-                <td className={n ? "arena-stats " + n : "arena-stats"}>{winLossRatio}%</td>
+                <td className={n ? `arena-stats ${n}` : "arena-stats"}>{name}</td>
+                <td className={n ? `arena-stats ${n}` : "arena-stats"}>Rating: {rating}</td>
+                <td className={n ? `arena-stats ${n}` : "arena-stats"}>W: {wins}</td>
+                <td className={n ? `arena-stats ${n}` : "arena-stats"}>L: {losses}</td>
+                <td className={n ? `arena-stats ${n}` : "arena-stats"}>Total: {played}</td>
+                <td className={n ? `arena-stats ${n}` : "arena-stats"}>{winLossRatio}%</td>
             </tr>
         )
     }

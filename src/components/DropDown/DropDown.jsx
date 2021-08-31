@@ -12,13 +12,13 @@ function DropDown() {
         }}
       >
         <i
-          style={{ color: "#fff" }}
+          style={{ color: "#c9d1d9" }}
           className="fas fa-bars fa-2x ml-4 dropbtn"
         ></i>
       </button>
 
       <div id="myDropdown" className="dropdown-content">
-        <AltDropDownListItem title="3v3" href="#map" />
+        <AltDropDownListItem title="3v3" href="#rob" />
         <AltDropDownListItem title="2v2" href="#threes-divider" />
         <DropDownListItem title="ArenaMarker" href="#chat" />
         <DropDownListItem title="DarkTheme" href="#raidframes" />
@@ -30,7 +30,6 @@ function DropDown() {
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = (event) => {
   if (!event.target.matches(".dropbtn")) {
-    console.log(event.target);
     let dropdowns = document.getElementsByClassName("dropdown-content");
     let i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -48,7 +47,7 @@ function AltDropDownListItem({title, href}) {
   )
 }
 
-function DropDownListItem({ title, href}) {
+function DropDownListItem({ title, href }) {
   function smoothScroll() {
     document.querySelector(href).scrollIntoView({
       behavior: "smooth",
@@ -56,9 +55,7 @@ function DropDownListItem({ title, href}) {
     });
   }
   return (
-    <>
         <a onClick={smoothScroll} className="dropdown-title">{title}</a>
-    </>
   );
 }
 export default DropDown;

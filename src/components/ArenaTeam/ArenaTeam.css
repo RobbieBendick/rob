@@ -3,9 +3,7 @@
 }
 
 .text {
-  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
-    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
-    0.05em 0.05em black;
+  text-shadow: var(--text-visibility);
   color: var(--text-color-inset-primary);
 }
 
@@ -23,9 +21,7 @@
 }
 
 .table-container {
-  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
-    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
-    0.05em 0.05em black;
+  text-shadow: var(--text-visibility);
   color: var(--text-color-inset-primary);
 }
 
@@ -39,9 +35,9 @@ table {
   height: 30rem;
   align-items: center;
   color: var(--text-color-inset-primary);
-  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
-    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
-    0.05em 0.05em black;
+  text-shadow: var(--text-visibility);
+  font-family: 'Signika Negative', sans-serif;
+  letter-spacing: 0.9px;
 }
 
 th {
