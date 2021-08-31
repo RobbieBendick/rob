@@ -2,10 +2,8 @@ import React from "react";
 import "./Sidebar.css";
 import useWindowSize from "../hooks/useWindowSize";
 
-
 function Sidebar() {
-  const windowSize = useWindowSize()
-
+  const windowSize = useWindowSize();
   return (
     <>
     {windowSize.width >= 1199 && (
@@ -13,7 +11,7 @@ function Sidebar() {
       <div className="sidebar-sticky sidebar-content">
         <ul className="nav flex-column mb-2 rob">
           <AltListItem title="3v3 team" href="rob"/>
-          <AltListItem title="2v2 team" href="threes-divider"/>
+          <AltListItem title="2v2 team" href="twos"/>
           <ListItem title="ArenaMarker" href="chat" />
           <ListItem title="DarkTheme" href="raidframes" />
           <ListItem title="Raidframes" href="footer" />
@@ -24,8 +22,6 @@ function Sidebar() {
     </>
   );
 }
-
-
 
 function AltListItem({ title, href }) {
   return (
@@ -46,11 +42,6 @@ function ListItem({ title, href }) {
       block: "end",
     });
   }
-
-
-
- 
-
   return (
     <li className="sidebar-item">
       <h5 className="sidebar-heading justify-content-between align-items-center mt-4 mb-4">

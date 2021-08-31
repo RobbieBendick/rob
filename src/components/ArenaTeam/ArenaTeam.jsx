@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ArenaTeam.css";
+import { motion } from "framer-motion"
 
 function ArenaTeam({robdog3v3Team, threesTeam, robdog2v2Team, twosTeam}) {
     
@@ -20,8 +21,8 @@ function ArenaTeam({robdog3v3Team, threesTeam, robdog2v2Team, twosTeam}) {
     return (
        <div>
             {robdog3v3Team === undefined ? <div class="loader"></div> : 
-            <div className="table-container" id="threes">
-                <i className="text">rank: {threesTeam.rank} (3v3)</i>
+            <motion.div initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 0.8}} className="table-container" id="threes">
+                <span className="text">rank: {threesTeam.rank} (3v3)</span>
                 <table className="arena-table">
                     <th>{robdog3v3Team.name}</th>
                     <th>Team Rating: {threesTeam.rating}</th>
@@ -35,11 +36,11 @@ function ArenaTeam({robdog3v3Team, threesTeam, robdog2v2Team, twosTeam}) {
                         ))}
                     </tbody>
                 </table>
-            </div>}
-            <hr id="threes-divider"/>
+            </motion.div>}
+            <hr id="twos"/>
             {robdog2v2Team === undefined ? <div style={{"marginTop": "10rem"}} class="loader"></div> :
-            <div className="table-container" id="twos" style={{"marginTop": "10rem"}}>
-                <i className="text">rank: {twosTeam.rank} (2v2)</i>
+            <motion.div className="table-container" id="divider" style={{"marginTop": "10rem"}} initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
+                <span className="text">rank: {twosTeam.rank} (2v2)</span>
                 <table className="arena-table">
                     <th className="tedh">{robdog2v2Team.name}</th>
                     <th className="tedh">Team Rating: {twosTeam.rating}</th>
@@ -53,7 +54,7 @@ function ArenaTeam({robdog3v3Team, threesTeam, robdog2v2Team, twosTeam}) {
                         ))}
                     </tbody>
                 </table>
-            </div>}
+            </motion.div>}
         </div>
     )
 }

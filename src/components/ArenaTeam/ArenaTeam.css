@@ -38,6 +38,8 @@ table {
   text-shadow: var(--text-visibility);
   font-family: 'Signika Negative', sans-serif;
   letter-spacing: 0.9px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4), 8px 8px 15px rgba(0, 0, 0, 0.7);
 }
 
 th {
@@ -83,8 +85,9 @@ th {
 }
 @media only screen and (max-width: 750px) {
   table {
-    width: 30rem;
-    height: 20rem;
+    width: 20rem;
+    height: 22rem;
+    overflow-x: scroll;
   }
   .arena-stats {
     line-height: 20px;

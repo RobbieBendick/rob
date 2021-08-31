@@ -136,9 +136,12 @@ a:not([href]).collapsible:hover {
 
 @media only screen and (max-width: 1500px) {
   .card {
-    width: 500px;
+    width: 350px;
   }
   .card img {
-    width: 500px;
+    width: 350px;
+  }
+  .addon-link {
+    right: 29.3%;
   }
 }

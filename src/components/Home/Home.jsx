@@ -16,8 +16,6 @@ function Home() {
   const [robdog2v2Team, setRobdog2v2Team] = useState(undefined);
   const [threesTeam, setThreesTeam] = useState(undefined);
   const [twosTeam, setTwosTeam] = useState(undefined);
-
-
   
   const findRobdog3v3 = () => {
     for(let i=0; i < wowPlayer3v3Data.length; i++){
@@ -64,7 +62,7 @@ function Home() {
     }
     if (wowPlayer2v2Data.length === 0) {
       myFetch(twos)
-      .then(res => setWowPlayer2v2Data(res.entries.slice(0,500)));
+      .then(res => setWowPlayer2v2Data(res.entries.slice(0,300)));
     }
   }, [wowPlayer3v3Data, wowPlayer2v2Data]); 
 
@@ -108,11 +106,14 @@ function HomeView({
       <div className="robdog">
         Mageiden's Active Teams
       </div>
-      <ArenaTeam wowPlayer3v3Data={wowPlayer3v3Data} 
-      robdog3v3Team={robdog3v3Team} 
-      threesTeam={threesTeam} 
-      robdog2v2Team={robdog2v2Team} 
-      twosTeam={twosTeam}/>
+      
+        <ArenaTeam wowPlayer3v3Data={wowPlayer3v3Data} 
+        robdog3v3Team={robdog3v3Team} 
+        threesTeam={threesTeam} 
+        robdog2v2Team={robdog2v2Team}
+        twosTeam={twosTeam}
+        
+        />
 
       <hr id="content-seperator"/>
 
@@ -124,7 +125,7 @@ function HomeView({
           addonTitle="ArenaMarker"
           imgSrc="/images/arenamarker.png"
           addonSrc="https://www.curseforge.com/wow/addons/arenamarker"
-          addonDescription="When you enter arena, gives you and your party members Raid Target Markers based on their class. In the case of duplicate classes, it will select an alternate marker."
+          addonDescription="Gives you and your party members Raid Target Markers based on their class in arena."
           key="1"
           id="rob"
           alt="addonmarker-img"
@@ -133,7 +134,7 @@ function HomeView({
           addonTitle="DarkTheme"
           imgSrc="/images/placeholder.png"
           addonSrc="https://github.com/RobbieBendick/darktheme"
-          addonDescription="Darkens WoW UI."
+          addonDescription="Darkens frames, target/focus/pet portraits, and cleans up clutter from the minimap."
           key="2"
           id="raidframes"
           alt="darktheme-img"
@@ -142,7 +143,7 @@ function HomeView({
           addonTitle="Raidframes"
           imgSrc="/images/placeholder.png"
           addonSrc=""
-          addonDescription="Switches Raid-Frame profiles depending on group size."
+          addonDescription="Switches between preset Raid-Frame profiles depending on group size."
           key="3"
           id="unitframes"
           alt="raidframes-img"
