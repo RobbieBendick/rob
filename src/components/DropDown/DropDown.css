@@ -1,0 +1,60 @@
+/* Dropdown List Div */
+div#myDropdown.show {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--main-bg-color-inset);
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: var(--text-color-inset-primary) !important;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: inline;
+  cursor: pointer;
+}
+
+.dropdown-title:not(a:last-child)::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 4rem;
+  background: #c9d1d9;
+  margin: 0.42rem auto 0 auto;
+  opacity: 1;
+}
+
+.dropdown-content a:hover {
+  color: gray;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: var(--main-bg-color);
+  border: none;
+}
+
+.dropdown-title::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 6rem;
+  background: black;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  opacity: 0.8;
+}

@@ -1,0 +1,22 @@
+#socials {
+  padding-bottom: 3rem;
+  padding-top: 8rem;
+}
+
+.social-media-icon {
+  margin: 3%;
+  color: var(--text-color-inset-primary);
+}
+
+.social-media-icon:hover {
+  opacity: 0.3;
+}
+
+.copyright.narrow {
+  padding: 80px 0px 0 0;
+  text-align: 'center';
+}
+
+.copyright.wide {
+  padding: 50px 0 0 0;
+}

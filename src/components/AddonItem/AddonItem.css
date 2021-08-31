@@ -1,0 +1,156 @@
+.pad {
+  padding-top: 7rem;
+}
+
+.addon-title {
+  color: #fff;
+  font-family: 'Russo One', sans-serif;
+  letter-spacing: 1.5px;
+  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
+    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
+    0.05em 0.05em black;
+}
+
+.addon-img {
+  padding: 2.5rem 0 3rem 0;
+  width: 600px;
+  height: 200px;
+}
+
+a:not([href]) {
+  color: #000;
+}
+a:not([href]).collapsible:hover {
+  opacity: 0.6;
+  color: #fff;
+}
+
+.background-img {
+  z-index: -1;
+  filter: blur(2px) grayscale(60%);
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.addon-link {
+  position: absolute;
+  bottom: 3%;
+  right: 36.8%;
+  color: #c9d1d9 !important;
+  text-decoration: underline !important;
+  cursor: pointer;
+  font-size: 20px;
+  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
+    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
+    0.05em 0.05em black;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: transparent;
+  color: var(--main-bg-color);
+  cursor: pointer;
+  padding: 18px 0 18px;
+  width: 3%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  margin-bottom: 1rem;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.content {
+  transition-property: color;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+  transition-delay: 0.3s;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+}
+
+.fade-in.appear {
+  opacity: 1;
+}
+
+.card-body {
+  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
+    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
+    0.05em 0.05em black;
+  text-align: center;
+  background-color: #161b22;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.card img {
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  width: 498px;
+  height: 11rem;
+}
+
+.card {
+  border-radius: 25px;
+  width: 500px;
+  margin: 0 auto;
+  background: gray;
+  margin: 50px auto 50px auto;
+  height: 460px;
+}
+
+.smooth-collapse {
+}
+
+.addon-title-popup {
+  color: var(--text-color-inset-primary);
+  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
+    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
+    0.05em 0.05em black;
+}
+
+.text-shadow {
+  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
+    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
+    0.05em 0.05em black;
+}
+
+.addon-title {
+  font-size: 2rem;
+  color: #c9d1d9;
+}
+
+.addon-title::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 8rem;
+  background: #c9d1d9;
+  margin: 0.4rem auto 0.8rem auto;
+  opacity: 0.3;
+}
+
+.addon-description {
+  color: #c9d1d9;
+  font-size: 1.2rem;
+  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
+    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
+    0.05em 0.05em black;
+}
+
+@media only screen and (max-width: 1500px) {
+  .card {
+    width: 500px;
+  }
+  .card img {
+    width: 500px;
+  }
+}

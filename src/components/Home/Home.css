@@ -1,0 +1,22 @@
+.pad {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.robdog {
+  color: var(--text-color-inset-primary);
+  font-size: xx-large;
+  padding: 2rem 0;
+  text-shadow: var(--text-visibility);
+}
+
+.rob-addon {
+  text-shadow: var(--text-visibility);
+  color: var(--text-color-inset-primary);
+  padding: 3rem 0 2rem 0;
+  font-size: xx-large;
+}
+
+.fa-home {
+  color: var(--text-color-inset-primary);
+}
