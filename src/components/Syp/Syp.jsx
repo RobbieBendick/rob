@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Syp.css";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
+import $ from "jquery";
 
 function Syp() {
     const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
@@ -8,6 +9,47 @@ function Syp() {
     const [syp3v3Team, setSyp3v3Team] = useState(undefined);
     const [syp2v2Team, setSyp2v2Team] = useState(undefined);
     
+
+    if (window.location.pathname === "syp") {
+        $(".nav-title:contains('Ally Mage (Syp)')").addClass("active")
+    } else {
+        $(".nav-title:contains('Ally Mage (Syp)')").removeClass("active")
+    }
+
+
+
+    const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
+
+    let listOfSidebarContent = ["3v3", "2v2", "ArenaMarker", "DarkTheme", "Raidframes"];
+  
+    for(let i=0;i < listOfSidebarContent.length; i++){
+      if (userScrollingPosition === listOfSidebarContent[i]){
+        $(`.${listOfSidebarContent[i]}`).addClass("active")
+      } else {
+        $(`.${listOfSidebarContent[i]}`).removeClass("active")
+      }
+    }
+
+    const options = {
+      root: null, // it is the viewport
+      threshold: 0.6,
+      rootMargin: "-55px"
+    }
+    const sections = document.querySelectorAll("section")
+    const observer = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) {
+          return;
+        }
+        setUserScrollingPosition(entry.target.id);
+        observer.unobserve(entry.target)
+      });
+    }, options);
+  
+    sections.forEach(section => {
+      observer.observe(section)
+    })
+  
     const findSyp3v3 = () => {
       for(let i=0; i < wowPlayer3v3Data.length; i++){
         if (!('members' in wowPlayer3v3Data[i].team)){

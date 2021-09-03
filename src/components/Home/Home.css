@@ -26,5 +26,9 @@
 }
 
 .active {
-  color: blue !important;
+  color: rgb(47, 87, 114) !important;
+}
+
+.nav-active {
+  color: rgb(47, 87, 114) !important;
 }

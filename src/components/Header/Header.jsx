@@ -5,6 +5,8 @@ import DropDown from "../DropDown/DropDown";
 
 function Header() {
   const windowSize = useWindowSize();
+  let sypPath = window.location.pathname === "/syp" ? "nav-active" : null;
+  // let rbdgPath = window.location.pathname === "/rbdg" ? "nav-active" : null;
 
   function smoothScroll() {
     window.location.pathname === "/" ? 
@@ -28,6 +30,14 @@ function Header() {
         ) : (
           <DropDown />
         )}
+        <div className="nav-container">
+          <h5>
+          <a className={`sidebar-title nav-title ${sypPath && "nav-active"}`} href={"/syp"}>Ally Mage (Syp)</a>
+          </h5>
+          <h5>
+          <a className="sidebar-title nav-title" href={"/syp"}>Horde Mage (Rbdg)</a>
+          </h5>
+        </div>
 
         <div className="nav-right">
           <ul className="px-3 social">

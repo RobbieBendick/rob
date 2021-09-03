@@ -31,3 +31,12 @@
 .navbar-brand {
   color: #c9d1d9;
 }
+
+.nav-title {
+  padding: 0 1rem 0 1rem;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+}

@@ -10,8 +10,8 @@ import $ from "jquery";
 function Home() {
   const windowSize = useWindowSize();
 
-
   const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
+
 
   const options = {
     root: null, // it is the viewport

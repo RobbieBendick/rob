@@ -6,20 +6,30 @@ import $ from "jquery";
 function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
     
     $(window).on('load', function(){
-        setTimeout(removeLoader, 12*1000); //wait for page load PLUS 12 seconds.
+        setTimeout(removeLoader, 8*1000); //wait for page load PLUS 12 seconds.
     });
     function removeLoader(){
-        $( ".loader" ).fadeOut(500, function() {
-          // fadeOut complete. Remove the loading div
-          $( ".loader" ).remove(); //makes page more lightweight
-        });
-        if (!$('#divider').length > 0) {
-            $( "#twos" ).fadeOut(500, function() {
-                // fadeOut complete. Remove the loading div
-                $( "#twos" ).remove(); //makes page more lightweight
-              });
-        }
+    $( ".loader" ).fadeOut(500, function() {
+        // fadeOut complete. Remove the loading div
+        $( ".loader" ).remove(); //makes page more lightweight
+    });
+
+    // if 2s team doesnt exist then remove from sidebar
+    if (!$("#divider").length > 0) {
+        $("#twos").fadeOut(500, function() {
+            // fadeOut complete. Remove the loading div
+            $("#twos").remove();
+            $(".sidebar ul li:contains('2v2')").remove();
+            });
     }
+    if (!$("#threes").length > 0) {
+        $("#content-seperator").fadeOut(500, function() {
+            // fadeOut complete. Remove the loading div
+            $("#content-seperator").remove();
+            $(".sidebar ul li:contains('3v3')").remove();
+            });
+        }
+    };
     
     const ArenaMember = ({name, rating, played, wins, losses, robdog}) => {
         let winLossRatio = Math.round(wins / played * 100 * 10) / 10;

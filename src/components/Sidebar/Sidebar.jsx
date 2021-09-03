@@ -1,22 +1,17 @@
 import React from "react";
 import "./Sidebar.css";
 import useWindowSize from "../hooks/useWindowSize";
+import $ from "jquery";
 
 function Sidebar() {
   const windowSize = useWindowSize();
-  let home = undefined;
-  if(window.location.pathname === "/") {
-    home = true;
-  } else {
-    home = false;
-  }
-
+  let home = window.location.pathname === "/" ? true : false;
   return (
     <>
     {windowSize.width >= 1199 && (
     <nav className="navbar-expand-lg d-none d-md-block sidebar list-unstyled">
       <div className="sidebar-sticky sidebar-content">
-        <ul className="nav flex-column mb-2 rob">
+        <ul className="nav flex-column mb-2 rob lob">
           <AltListItem title="3v3 team" href="rob"/>
           <AltListItem title="2v2 team" href="twos"/>
           {home &&
