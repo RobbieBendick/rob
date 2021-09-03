@@ -12,15 +12,18 @@ function Sidebar() {
     <nav className="navbar-expand-lg d-none d-md-block sidebar list-unstyled">
       <div className="sidebar-sticky sidebar-content">
         <ul className="nav flex-column mb-2 rob lob">
+          
+          <>
           <AltListItem title="3v3 team" href="rob"/>
           <AltListItem title="2v2 team" href="twos"/>
-          {home &&
+          </>
+
+        {home &&
           <>
           <ListItem title="ArenaMarker" href="chat" />
           <ListItem title="DarkTheme" href="raidframes" />
           <ListItem title="Raidframes" href="footer" />
-          </>
-          }
+          </>}
         </ul>
       </div>
     </nav>

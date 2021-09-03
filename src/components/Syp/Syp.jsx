@@ -106,7 +106,7 @@ function Syp() {
 
     return (
             <div style={{"paddingTop": "10rem"}}>
-                <h1 className="rob-addon">Syp's Teams</h1>
+                <h1 className="rob-addon">Syp's Active Teams</h1>
                 <ArenaTeam robdog2v2Team={syp2v2Team} robdog3v3Team={syp3v3Team} robCharacter="Syp"/>
             </div>
             )

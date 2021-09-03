@@ -3,10 +3,9 @@ import "./ArenaTeam.css";
 import { motion } from "framer-motion";
 import $ from "jquery";
 
-function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
-    
+function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {    
     $(window).on('load', function(){
-        setTimeout(removeLoader, 8*1000); //wait for page load PLUS 12 seconds.
+        setTimeout(removeLoader, 10*1000); //wait for page load PLUS 10 seconds.
     });
     function removeLoader(){
     $( ".loader" ).fadeOut(500, function() {
@@ -20,15 +19,18 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
             // fadeOut complete. Remove the loading div
             $("#twos").remove();
             $(".sidebar ul li:contains('2v2')").remove();
-            });
+        });
     }
+    // if threes team doesnt show up
     if (!$("#threes").length > 0) {
+        //hide 3v3 team
         $("#content-seperator").fadeOut(500, function() {
-            // fadeOut complete. Remove the loading div
             $("#content-seperator").remove();
+        });
+        //hide sidebar 3v3
+        $(".sidebar ul li:contains('3v3')").fadeOut(500, function() {
             $(".sidebar ul li:contains('3v3')").remove();
-            });
-        }
+        })}
     };
     
     const ArenaMember = ({name, rating, played, wins, losses, robdog}) => {

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./AddonItem.css";
 import SmoothCollapse from "react-smooth-collapse";
 import { motion } from "framer-motion";
-import IconButton from "@material-ui/core/Button";
 
 
 function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, last }) {

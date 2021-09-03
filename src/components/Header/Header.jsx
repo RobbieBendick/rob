@@ -5,8 +5,11 @@ import DropDown from "../DropDown/DropDown";
 
 function Header() {
   const windowSize = useWindowSize();
-  let sypPath = window.location.pathname === "/syp" ? "nav-active" : null;
-  // let rbdgPath = window.location.pathname === "/rbdg" ? "nav-active" : null;
+  let mainPath = window.location.pathname === "/" ? "nav-active" : "";
+  let sypPath = window.location.pathname === "/syp" ? "nav-active" : "";
+  let rbdgPath = window.location.pathname === "/rbdg" ? "nav-active" : "";
+  let soyeonPath = window.location.pathname === "/soyeonuwu" ? "nav-active" : "";
+
 
   function smoothScroll() {
     window.location.pathname === "/" ? 
@@ -32,10 +35,16 @@ function Header() {
         )}
         <div className="nav-container">
           <h5>
-          <a className={`sidebar-title nav-title ${sypPath && "nav-active"}`} href={"/syp"}>Ally Mage (Syp)</a>
+           <a className={`sidebar-title nav-title ${mainPath}`} href="/">Main Rogue (Robdog)</a>
           </h5>
           <h5>
-          <a className="sidebar-title nav-title" href={"/syp"}>Horde Mage (Rbdg)</a>
+            <a className={`sidebar-title nav-title ${soyeonPath}`} href="/soyeonuwu">Horde Rogue (Soyeonuwu)</a>
+          </h5>
+          <h5>
+           <a className={`sidebar-title nav-title ${sypPath}`} href="/syp">Ally Mage (Syp)</a>
+          </h5>
+          <h5>
+            <a className={`sidebar-title nav-title ${rbdgPath}`} href="/rbdg">Horde Mage (Rbdg)</a>
           </h5>
         </div>
 

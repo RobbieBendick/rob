@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import AddonItem from "../AddonItem/AddonItem";
 import useWindowSize from "../hooks/useWindowSize";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
-import Copyright from "../Copyright/Copyright";
 import $ from "jquery";
+import AddonItem from "../AddonItem/AddonItem";
 
 
 function Home() {
@@ -145,13 +144,9 @@ function HomeView({
         robdog2v2Team={robdog2v2Team}
         robCharacter="Robdog"
         />
-
-      <hr id="content-seperator"/>
-
-      <h1 className="rob-addon">
-        Mageiden's Addons
-      </h1>
-      <ul>
+        <hr id="content-seperator"/>
+        <h1 className="rob-addon">Mageiden's Addons</h1>
+        <ul>
         <AddonItem
           addonTitle="ArenaMarker"
           imgSrc="/images/arenamarker.png"
@@ -181,7 +176,6 @@ function HomeView({
           last={true}
         />
       </ul>
-      <Copyright />
     </div>
   );
 }
