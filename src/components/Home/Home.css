@@ -6,7 +6,7 @@
 .robdog {
   color: var(--text-color-inset-primary);
   font-size: xx-large;
-  padding: 2rem 0;
+  padding-bottom: 3rem;
   text-shadow: var(--text-visibility);
   text-decoration: underline;
   text-decoration-thickness: 0.1px;
@@ -23,4 +23,8 @@
 
 .fa-home {
   color: var(--text-color-inset-primary);
+}
+
+.active {
+  color: blue !important;
 }

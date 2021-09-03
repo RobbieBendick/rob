@@ -15,8 +15,10 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
     buttons.push(<i className="fas fa-plus"></i>);
   }
 
+
   return (
     <>
+    <section id={addonTitle}>
       {!toggle ? (
         <motion.div
           initial={{ opacity: 0 }}
@@ -70,6 +72,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
           {!last && <hr id={hr} />}
         </SmoothCollapse>
       )}
+      </section>
     </>
   );
 }

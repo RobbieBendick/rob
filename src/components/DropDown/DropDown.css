@@ -47,14 +47,3 @@ div#myDropdown.show {
   background-color: var(--main-bg-color);
   border: none;
 }
-
-.dropdown-title::after {
-  content: '';
-  display: block;
-  height: 1px;
-  width: 6rem;
-  background: black;
-  margin-top: 0.3rem;
-  margin-bottom: 0.3rem;
-  opacity: 0.8;
-}

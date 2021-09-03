@@ -9,6 +9,10 @@
     0.05em -0.05em black, 0.05em 0.05em black;
 }
 
+.homeView {
+  padding-top: 10rem;
+}
+
 .navbar {
   background-color: var(--main-bg-color);
 }

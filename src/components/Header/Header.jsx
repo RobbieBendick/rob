@@ -7,11 +7,12 @@ function Header() {
   const windowSize = useWindowSize();
 
   function smoothScroll() {
-    document.querySelector("#rob").scrollIntoView({
+    window.location.pathname === "/" ? 
+    document.querySelector("#root").scrollIntoView({
       behavior: "smooth",
       block: "start",
-    });
-  }
+    }) : window.location.pathname = "/";
+  };
 
   return (
     <div className="navv">

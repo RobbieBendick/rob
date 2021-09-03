@@ -39,6 +39,8 @@ function CopyrightCard() {
       <a
         style={{ paddingLeft: "10px", color: "#fff" }}
         href="http://www.twitter.com/mageiden"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <i className="fab fa-twitter"></i>
       </a>

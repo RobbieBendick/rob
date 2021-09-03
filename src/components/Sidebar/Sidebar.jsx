@@ -4,6 +4,13 @@ import useWindowSize from "../hooks/useWindowSize";
 
 function Sidebar() {
   const windowSize = useWindowSize();
+  let home = undefined;
+  if(window.location.pathname === "/") {
+    home = true;
+  } else {
+    home = false;
+  }
+
   return (
     <>
     {windowSize.width >= 1199 && (
@@ -12,9 +19,13 @@ function Sidebar() {
         <ul className="nav flex-column mb-2 rob">
           <AltListItem title="3v3 team" href="rob"/>
           <AltListItem title="2v2 team" href="twos"/>
+          {home &&
+          <>
           <ListItem title="ArenaMarker" href="chat" />
           <ListItem title="DarkTheme" href="raidframes" />
           <ListItem title="Raidframes" href="footer" />
+          </>
+          }
         </ul>
       </div>
     </nav>
