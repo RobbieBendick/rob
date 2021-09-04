@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import "./AddonItem.css";
 import SmoothCollapse from "react-smooth-collapse";
 import { motion } from "framer-motion";
-import $ from "jquery";
-
 
 
 function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, last }) {
@@ -16,10 +14,9 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
     buttons.push(<i className="fas fa-plus"></i>);
   }
 
-
   return (
     <>
-    <section id={toggle ? addonTitle : ""}>
+    <section id={toggle && addonTitle}>
       {!toggle ? (
         <motion.div
           initial={{ opacity: 0 }}
@@ -49,7 +46,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
         {buttons}
       </a>
       {toggle ? (
-        <SmoothCollapse className="smooth-collapse" expanded={true} heightTransition="0.6s ease">
+        <SmoothCollapse expanded={true} heightTransition="0.6s ease">
           <motion.div whileHover={{scale: 1.07}} transition={{duration: 0.45}} className="card">
             <img className="card-img-top" src={imgSrc} alt={alt} />
             <div className="card-body">

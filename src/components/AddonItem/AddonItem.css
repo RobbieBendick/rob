@@ -97,9 +97,6 @@ a:not([href]).collapsible:hover {
   height: 420px;
 }
 
-.smooth-collapse {
-}
-
 .addon-title-popup {
   color: var(--text-color-inset-primary);
   text-shadow: var(--text-visibility);

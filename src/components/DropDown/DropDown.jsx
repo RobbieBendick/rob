@@ -21,16 +21,18 @@ function DropDown() {
       </button>
 
       <div id="myDropdown" className="dropdown-content">
-        <AltDropDownListItem title="3v3" href="#rob" />
-        <AltDropDownListItem title="2v2" href="#twos" />
-        {home &&
+        {home ?
         <>
         <DropDownListItem title="ArenaMarker" href="#chat" />
         <DropDownListItem title="DarkTheme" href="#raidframes" />
         <DropDownListItem title="Raidframes" href="#footer"/>
         </>
-         }
-        
+        :
+        <>
+        <AltDropDownListItem title="3v3" href="#rob" />
+        <AltDropDownListItem title="2v2" href="#twos" />
+        </>
+        }
       </div>
     </div>
   );
