@@ -32,3 +32,11 @@ html {
 body:not(.sidebar) {
   font-family: 'Signika Negative', sans-serif;
 }
+
+.active {
+  color: rgb(47, 87, 114) !important;
+}
+
+.nav-active {
+  color: rgb(47, 87, 114) !important;
+}

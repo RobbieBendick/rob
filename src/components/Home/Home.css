@@ -24,11 +24,3 @@
 .fa-home {
   color: var(--text-color-inset-primary);
 }
-
-.active {
-  color: rgb(47, 87, 114) !important;
-}
-
-.nav-active {
-  color: rgb(47, 87, 114) !important;
-}

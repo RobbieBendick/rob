@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./AddonItem.css";
 import SmoothCollapse from "react-smooth-collapse";
 import { motion } from "framer-motion";
+import $ from "jquery";
+
 
 
 function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, last }) {
@@ -17,7 +19,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
 
   return (
     <>
-    <section id={addonTitle}>
+    <section id={toggle ? addonTitle : ""}>
       {!toggle ? (
         <motion.div
           initial={{ opacity: 0 }}

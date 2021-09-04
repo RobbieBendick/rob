@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
+import Copyright from "../Copyright/Copyright"
 function Rbdg() {
     const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
     const [wowPlayer2v2Data, setWowPlayer2v2Data] = useState([]);
@@ -95,10 +96,10 @@ function Rbdg() {
 
 
     return (
-        <div style={{"paddingTop": "10rem"}}>
+      <div style={{"paddingTop": "10rem"}}>
         <h1 className="rob-addon">Rbdg's Active Teams</h1>
         <ArenaTeam robdog2v2Team={rbdg2v2Team} robdog3v3Team={rbdg3v3Team} robCharacter="Rbdg"/>
-    </div>
+      </div>
     )
 }
 

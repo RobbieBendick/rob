@@ -5,33 +5,51 @@ import $ from "jquery";
 
 function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {    
     $(window).on('load', function(){
-        setTimeout(removeLoader, 10*1000); //wait for page load PLUS 10 seconds.
+        setTimeout(removeLoader, 12*1000); //wait for page load PLUS 10 seconds.
     });
     function removeLoader(){
-    $( ".loader" ).fadeOut(500, function() {
-        // fadeOut complete. Remove the loading div
-        $( ".loader" ).remove(); //makes page more lightweight
-    });
-
-    // if 2s team doesnt exist then remove from sidebar
-    if (!$("#divider").length > 0) {
-        $("#twos").fadeOut(500, function() {
+        $( ".loader" ).fadeOut(500, function() {
             // fadeOut complete. Remove the loading div
-            $("#twos").remove();
-            $(".sidebar ul li:contains('2v2')").remove();
+            $( ".loader" ).remove(); //makes page more lightweight
         });
-    }
-    // if threes team doesnt show up
-    if (!$("#threes").length > 0) {
-        //hide 3v3 team
-        $("#content-seperator").fadeOut(500, function() {
-            $("#content-seperator").remove();
-        });
-        //hide sidebar 3v3
-        $(".sidebar ul li:contains('3v3')").fadeOut(500, function() {
-            $(".sidebar ul li:contains('3v3')").remove();
-        })}
+
+        // if 2s team doesnt exist then remove from sidebar
+        if (!$("#divider").length > 0) {
+            // hide 2v2 team
+            $("#twos").fadeOut(500, function() {
+                $("#twos").remove();
+            });
+            // hide sidebar 2v2
+            $(".sidebar ul li:contains('2v2')").fadeOut(500, function() {
+                $(".sidebar ul li:contains('2v2')").remove();
+            })
+        };
+
+        // if threes team doesnt show up
+        if (!$("#threes").length > 0) {
+            // hide 3v3 team
+            $("#content-seperator").fadeOut(500, function() {
+                $("#content-seperator").remove();
+            });
+            // hide sidebar 3v3
+            $(".sidebar ul li:contains('3v3')").fadeOut(500, function() {
+                $(".sidebar ul li:contains('3v3')").remove();
+            })
+        };
+
+        // if threes AND twos team BOTH dont show up
+        if (!$("#threes").length > 0 && !$("#divider").length > 0) {
+            // move footer to bottom, and let user know we couldn't find a team.
+            $("#footer").css("position", "absolute").css("bottom", 0)
+            setTimeout(() => {
+                $(".unavailable").fadeIn(500, function() {
+                    $(".unavailable").html("Sorry! We could not retrieve an active arena team.").css({paddingTop:"40px",color: "#c9d1d9", fontSize: "35px", textShadow: "0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black,0.05em -0.05em black, 0.05em 0.05em black"})
+                })
+            }, 550);
+        };
     };
+
+
     
     const ArenaMember = ({name, rating, played, wins, losses, robdog}) => {
         let winLossRatio = Math.round(wins / played * 100 * 10) / 10;
@@ -47,8 +65,8 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
         )
     }
     return (
-       <div>
-            {robdog3v3Team === undefined ? <div class="loader"></div> : 
+       <div className="unavailable">
+            {robdog3v3Team === undefined ? <div className="loader"></div> : 
             <section id="3v3">
             <motion.div initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 0.8}} className="table-container" id="threes">
                 <span className="text">rank: {robdog3v3Team.rank} (3v3)</span>
@@ -71,7 +89,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
             </motion.div>
             </section>}
             <hr id="twos"/>
-            {robdog2v2Team === undefined ? <div style={{"marginTop": "10rem"}} class="loader"></div> :
+            {robdog2v2Team === undefined ? <div style={{"marginTop": "10rem"}} className="loader"></div> :
             <section id="2v2">
            <motion.div className="table-container" id="divider" style={{"marginTop": "10rem"}} initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
                 <span className="text">rank: {robdog2v2Team.rank} (2v2)</span>

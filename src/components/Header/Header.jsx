@@ -5,7 +5,7 @@ import DropDown from "../DropDown/DropDown";
 
 function Header() {
   const windowSize = useWindowSize();
-  let mainPath = window.location.pathname === "/" ? "nav-active" : "";
+  let mainPath = window.location.pathname === "/robdog" ? "nav-active" : "";
   let sypPath = window.location.pathname === "/syp" ? "nav-active" : "";
   let rbdgPath = window.location.pathname === "/rbdg" ? "nav-active" : "";
   let soyeonPath = window.location.pathname === "/soyeonuwu" ? "nav-active" : "";
@@ -34,18 +34,19 @@ function Header() {
           <DropDown />
         )}
         <div className="nav-container">
-          <h5>
-           <a className={`sidebar-title nav-title ${mainPath}`} href="/">Main Rogue (Robdog)</a>
+        <h5>
+            <a className={`sidebar-title nav-title ${mainPath}`} href="/robdog">Main Rogue</a>
           </h5>
           <h5>
-            <a className={`sidebar-title nav-title ${soyeonPath}`} href="/soyeonuwu">Horde Rogue (Soyeonuwu)</a>
+            <a className={`sidebar-title nav-title ${soyeonPath}`} href="/soyeonuwu">Horde Rogue</a>
           </h5>
           <h5>
-           <a className={`sidebar-title nav-title ${sypPath}`} href="/syp">Ally Mage (Syp)</a>
+           <a className={`sidebar-title nav-title ${sypPath}`} href="/syp">Alliance Mage</a>
           </h5>
           <h5>
-            <a className={`sidebar-title nav-title ${rbdgPath}`} href="/rbdg">Horde Mage (Rbdg)</a>
+            <a className={`sidebar-title nav-title ${rbdgPath}`} href="/rbdg">Horde Mage</a>
           </h5>
+
         </div>
 
         <div className="nav-right">
