@@ -12,7 +12,7 @@ import Robdog from "./components/Robdog/Robdog";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App" id="App">
         <Sidebar />
         <Header />
         <Switch>

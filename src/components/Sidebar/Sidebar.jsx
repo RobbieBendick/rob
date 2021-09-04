@@ -5,7 +5,6 @@ import $ from "jquery";
 
 function Sidebar() {
   const windowSize = useWindowSize();
-  
   let home = window.location.pathname === "/" ? true : false;
   return (
     <>
@@ -21,7 +20,7 @@ function Sidebar() {
           </>
           :
           <>
-          <AltListItem title="3v3 team" href="rob"/>
+          <AltListItem title="3v3 team" href="App"/>
           <AltListItem title="2v2 team" href="twos"/>
           </>}
         </ul>

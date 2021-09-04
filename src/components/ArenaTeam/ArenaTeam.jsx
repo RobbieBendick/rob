@@ -3,9 +3,14 @@ import "./ArenaTeam.css";
 import { motion } from "framer-motion";
 import $ from "jquery";
 
-function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {    
+function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
+
+    // removes /"#id"
+    const removeHash = () => window.history.pushState("", document.title, `${window.location.pathname}${window.location.search}`);
+    if (window.location.hash !== "") removeHash();
+
     $(window).on('load', function(){
-        setTimeout(removeLoader, 12*1000); //wait for page load PLUS 10 seconds.
+        setTimeout(removeLoader, 10*1000); //wait for page load PLUS 10 seconds.
     });
     function removeLoader(){
         $( ".loader" ).fadeOut(500, function() {
