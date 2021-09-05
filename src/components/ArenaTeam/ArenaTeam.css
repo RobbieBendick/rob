@@ -19,10 +19,16 @@
 .tedh {
   line-height: 32px;
 }
-
+#\32v2 table {
+  height: 20rem;
+}
 .table-container {
+  overflow-x: hidden;
+  max-width: 60rem;
+  height: auto;
   text-shadow: var(--text-visibility);
   color: var(--text-color-inset-primary);
+  margin: 0 auto;
 }
 
 .arena-table {
@@ -77,6 +83,11 @@ th {
   margin: 0 auto;
 }
 
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  color: rgb(160, 160, 160);
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -87,21 +98,36 @@ th {
 }
 
 @media only screen and (max-width: 1350px) {
-  table {
-    width: 45rem;
+  .table {
+    max-width: 35rem;
+  }
+  .table-container {
+    overflow-x: scroll;
+    max-width: 45rem;
+  }
+  th,
+  td {
+    min-width: 120px;
   }
 }
 @media only screen and (max-width: 750px) {
-  table {
-    width: 20rem;
-    height: 22rem;
+  .table-container {
     overflow-x: scroll;
+    max-width: 20rem;
   }
+  .table {
+    max-width: 1rem;
+  }
+  th,
+  td {
+    min-width: 100px;
+  }
+
   .arena-stats {
-    line-height: 20px;
+    line-height: 10px;
   }
   th {
-    line-height: 25px;
+    line-height: 10px;
   }
   .arena-stats .ted {
     line-height: 0px;

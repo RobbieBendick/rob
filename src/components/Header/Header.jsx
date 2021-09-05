@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import useWindowSize from "../hooks/useWindowSize";
 import DropDown from "../DropDown/DropDown";
+import CharacterDropDown from "../CharacterDropDown/CharacterDropDown";
 
 function Header() {
   const windowSize = useWindowSize();
@@ -33,8 +34,12 @@ function Header() {
         ) : (
           <DropDown />
         )}
+       
+       
+       {windowSize.width >= 1199 ?
+
         <div className="nav-container">
-        <h5>
+          <h5>
             <a className={`sidebar-title nav-title ${mainPath}`} href="/robdog">Main Rogue</a>
           </h5>
           <h5>
@@ -46,11 +51,12 @@ function Header() {
           <h5>
             <a className={`sidebar-title nav-title ${rbdgPath}`} href="/rbdg">Horde Mage</a>
           </h5>
-
         </div>
-
-        <div className="nav-right">
-          <ul className="px-3 social">
+        :
+        <CharacterDropDown />
+  }
+        <div className="social-container">
+          <ul className="social">
             <a
               className="social-media-icon"
               target="_blank"

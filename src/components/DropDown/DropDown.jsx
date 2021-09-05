@@ -29,7 +29,8 @@ function DropDown() {
         </>
         :
         <>
-        <AltDropDownListItem title="3v3" href="#rob" />
+        <AltDropDownListItem title="Home" href="/" />
+        <AltDropDownListItem title="3v3" href="#App" />
         <AltDropDownListItem title="2v2" href="#twos" />
         </>
         }
@@ -39,13 +40,28 @@ function DropDown() {
 }
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = (event) => {
+  const newDropdowns = [];
+    newDropdowns.push(document.getElementsByClassName("dropdown-content"));
+    newDropdowns.push(document.getElementsByClassName("character-dropdown-content"));
   if (!event.target.matches(".dropbtn")) {
-    let dropdowns = document.getElementsByClassName("dropdown-content");
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
+    if (!event.target.matches(".character-dropbtn")){
+      for (let i = 0; i < newDropdowns.length; i++) {
+        for (let j = 0; j < newDropdowns[i].length; j++) {
+          let openDropdown = newDropdowns[i][j];
+          if (openDropdown.classList.contains("show")) {
+            openDropdown.classList.remove("show");        
+          }
+        }
+      }
+    }
+    
+
+    for (let i = 0; i < newDropdowns.length; i++) {
+      for (let j = 0; j < newDropdowns[i].length; j++) {
+        let openDropdown = newDropdowns[i][j];
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show");        
+        }
       }
     }
   }
