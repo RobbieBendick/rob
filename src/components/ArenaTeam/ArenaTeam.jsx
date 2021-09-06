@@ -10,7 +10,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
     if (window.location.hash !== "") removeHash();
 
     $(window).on('load', function(){
-        setTimeout(removeLoader, 8*1000); //wait for page load PLUS 8 seconds.
+        setTimeout(removeLoader, 10*1000); //wait for page load PLUS 10 seconds.
     });
     function removeLoader(){
         $( ".loader" ).fadeOut(500, function() {

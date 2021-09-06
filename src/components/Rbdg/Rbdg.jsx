@@ -2,18 +2,16 @@ import React, {useState, useEffect} from "react";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
 import Copyright from "../Copyright/Copyright"
-function Rbdg({character}) {
+function Rbdg() {
     const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
     const [wowPlayer2v2Data, setWowPlayer2v2Data] = useState([]);
     const [rbdg3v3Team, setRbdg3v3Team] = useState(undefined);
     const [rbdg2v2Team, setRbdg2v2Team] = useState(undefined);
+
     const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
 
-    useEffect(() => {
-      document.title = `${character}'s Arena Teams`;
-    });
-
-    let listOfSidebarContent = ["3v3", "2v2"];
+    let listOfSidebarContent = ["3v3", "2v2", "ArenaMarker", "DarkTheme", "Raidframes"];
+  
     for(let i=0;i < listOfSidebarContent.length; i++){
       if (userScrollingPosition === listOfSidebarContent[i]){
         $(`.${listOfSidebarContent[i]}`).addClass("active")
@@ -66,7 +64,7 @@ function Rbdg({character}) {
             continue;
           }
           for(let j=0; j < wowPlayer3v3Data[i].team.members.length; j++){
-            if (wowPlayer3v3Data[i].team.members[j].character.name === character) {
+            if (wowPlayer3v3Data[i].team.members[j].character.name === "Rbdg") {
               setRbdg3v3Team(wowPlayer3v3Data[i]);
               break;
             }
@@ -80,7 +78,7 @@ function Rbdg({character}) {
             continue;
           }
           for(let j=0; j < wowPlayer2v2Data[i].team.members.length; j++){
-            if (wowPlayer2v2Data[i].team.members[j].character.name === character) {
+            if (wowPlayer2v2Data[i].team.members[j].character.name === "Rbdg") {
               setRbdg2v2Team(wowPlayer2v2Data[i]);
               break;
             }
@@ -99,8 +97,8 @@ function Rbdg({character}) {
 
     return (
       <div style={{"paddingTop": "10rem"}}>
-        <h1 className="rob-addon">{character}'s Active Teams</h1>
-        <ArenaTeam robdog2v2Team={rbdg2v2Team} robdog3v3Team={rbdg3v3Team} robCharacter={character}/>
+        <h1 className="rob-addon">Rbdg's Active Teams</h1>
+        <ArenaTeam robdog2v2Team={rbdg2v2Team} robdog3v3Team={rbdg3v3Team} robCharacter="Rbdg"/>
       </div>
     )
 }

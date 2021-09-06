@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -17,17 +17,17 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/syp" render={props => <Syp {...props} character="Syp"/>}/>
-          <Route path="/rbdg" render={props => <Rbdg {...props} character="Rbdg"/>} />
-          <Route path="/soyeonuwu" render={props => <Soyeonuwu {...props} character="Soyeonuwu"/>}/>
-          <Route path="/robdog" render={props => <Robdog {...props} character="Robdog"/>} />
+          <Route path="/syp" component={Syp}/>
+          <Route path="/rbdg" component={Rbdg}/>
+          <Route path="/soyeonuwu" component={Soyeonuwu}/>
+          <Route path="/robdog" component={Robdog} />
         </Switch>
         <Copyright />
       </div>
        {/* background img */}
        <img
         className="background-img"
-        src="/images/background.jpg"
+        src="/images/wes.jpg"
         alt="backround-img"
       ></img>
     </Router>

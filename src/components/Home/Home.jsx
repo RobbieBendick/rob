@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import useWindowSize from "../hooks/useWindowSize";
+import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
+import AddonItem from "../AddonItem/AddonItem";
 import Addons from "../Addons/Addons";
+
+
+
 
 function Home() {
 
@@ -70,7 +75,10 @@ function Home() {
   );
 }
 
-function HomeView() {
+function HomeView({
+  wowPlayer3v3Data,
+  robdog3v3Team,
+  robdog2v2Team}) {
 
   return (
     <div id="rob" className="pad">
