@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from "react";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
-function Soyeonuwu() {
+function Soyeonuwu({character}) {
     const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
     const [wowPlayer2v2Data, setWowPlayer2v2Data] = useState([]);
     const [soyeon3v3Team, setSoyeon3v3Team] = useState(undefined);
     const [soyeon2v2Team, setSoyeon2v2Team] = useState(undefined);
-
     const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
 
-    let listOfSidebarContent = ["3v3", "2v2", "ArenaMarker", "DarkTheme", "Raidframes"];
+
+    let listOfSidebarContent = ["3v3", "2v2"];
   
     for(let i=0;i < listOfSidebarContent.length; i++){
       if (userScrollingPosition === listOfSidebarContent[i]){
@@ -63,7 +63,7 @@ function Soyeonuwu() {
             continue;
           }
           for(let j=0; j < wowPlayer3v3Data[i].team.members.length; j++){
-            if (wowPlayer3v3Data[i].team.members[j].character.name === "Soyeonuwu") {
+            if (wowPlayer3v3Data[i].team.members[j].character.name === character) {
               setSoyeon3v3Team(wowPlayer3v3Data[i]);
               break;
             }
@@ -77,7 +77,7 @@ function Soyeonuwu() {
             continue;
           }
           for(let j=0; j < wowPlayer2v2Data[i].team.members.length; j++){
-            if (wowPlayer2v2Data[i].team.members[j].character.name === "Soyeonuwu") {
+            if (wowPlayer2v2Data[i].team.members[j].character.name === character) {
               setSoyeon2v2Team(wowPlayer2v2Data[i]);
               break;
             }
@@ -96,7 +96,7 @@ function Soyeonuwu() {
 
     return (
         <div style={{"paddingTop": "10rem"}}>
-        <h1 className="rob-addon">Soyeonuwu's Active Teams</h1>
+        <h1 className="rob-addon">{character}'s Active Teams</h1>
         <ArenaTeam robdog2v2Team={soyeon2v2Team} robdog3v3Team={soyeon3v3Team} robCharacter="Soyeonuwu"/>
     </div>
     )

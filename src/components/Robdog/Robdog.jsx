@@ -3,24 +3,24 @@ import "./Robdog.css";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
 
-function Robdog() {
+function Robdog({character}) {
     const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
     const [wowPlayer2v2Data, setWowPlayer2v2Data] = useState([]);
     const [Robdog3v3Team, setRobdog3v3Team] = useState(undefined);
     const [Robdog2v2Team, setRobdog2v2Team] = useState(undefined);
+    const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
     
 
-    if (window.location.pathname === "Robdog") {
+    if (window.location.pathname === character) {
         $(".nav-title:contains('Main Rogue (Robdog)')").addClass("active")
     } else {
         $(".nav-title:contains('Main Rogue (Robdog)')").removeClass("active")
     }
+    useEffect(() => {
+      document.title = `${character}'s Arena Teams`;
+    });
 
-
-
-    const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
-
-    let listOfSidebarContent = ["3v3", "2v2", "ArenaMarker", "DarkTheme", "Raidframes"];
+    let listOfSidebarContent = ["3v3", "2v2"];
   
     for(let i=0;i < listOfSidebarContent.length; i++){
       if (userScrollingPosition === listOfSidebarContent[i]){
@@ -57,7 +57,7 @@ function Robdog() {
           continue;
         }
         for(let j=0; j < wowPlayer3v3Data[i].team.members.length; j++){
-          if (wowPlayer3v3Data[i].team.members[j].character.name === "Robdog") {
+          if (wowPlayer3v3Data[i].team.members[j].character.name === character) {
             setRobdog3v3Team(wowPlayer3v3Data[i]);
             break;
           }
@@ -71,7 +71,7 @@ function Robdog() {
           continue;
         }
         for(let j=0; j < wowPlayer2v2Data[i].team.members.length; j++){
-          if (wowPlayer2v2Data[i].team.members[j].character.name === "Robdog") {
+          if (wowPlayer2v2Data[i].team.members[j].character.name === character) {
             setRobdog2v2Team(wowPlayer2v2Data[i]);
             break;
           }
@@ -106,8 +106,8 @@ function Robdog() {
 
     return (
             <div style={{"paddingTop": "10rem"}}>
-                <h1 className="rob-addon">Robdog's Active Teams</h1>
-                <ArenaTeam robdog2v2Team={Robdog2v2Team} robdog3v3Team={Robdog3v3Team} robCharacter="Robdog"/>
+            <h1 className="rob-addon">{character}'s Active Teams</h1>
+                <ArenaTeam robdog2v2Team={Robdog2v2Team} robdog3v3Team={Robdog3v3Team} robCharacter={character}/>
             </div>
             )
     }

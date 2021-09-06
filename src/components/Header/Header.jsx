@@ -57,7 +57,7 @@ function Header() {
       </button>
   }
         {sideBar &&
-          <CharacterDropDown boolean={sideBar} booleanFunction={setSidebar}/>
+          <CharacterDropDown booleanFunction={setSidebar}/>
         }
         <div className="social-container">
           <ul className="social">

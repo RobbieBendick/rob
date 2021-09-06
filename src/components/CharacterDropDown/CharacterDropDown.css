@@ -24,7 +24,7 @@
   height: 1px;
   width: 4rem;
   background: #c9d1d9;
-  margin: 1.6rem auto 0 auto;
+  margin: 1.2rem auto 0 auto;
   opacity: 1;
 }
 #character-sidebar {
@@ -41,11 +41,6 @@
 
 #character-sidebar a {
   color: var(--text-color-inset-primary);
-  font-size: 20px;
-  padding: 10px 0;
-}
-#character-sidebar a .active-character {
-  color: red !important;
   font-size: 20px;
   padding: 10px 0;
 }
