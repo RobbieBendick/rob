@@ -2,6 +2,8 @@
 div#myDropdown.show {
   display: flex;
   flex-direction: column;
+  width: 200px;
+  background-color: var(--main-bg-color);
 }
 
 .dropdown {
@@ -34,7 +36,7 @@ div#myDropdown.show {
   height: 1px;
   width: 4rem;
   background: #c9d1d9;
-  margin: 0.42rem auto 0 auto;
+  margin: 1.62rem auto 0 auto;
   opacity: 1;
 }
 

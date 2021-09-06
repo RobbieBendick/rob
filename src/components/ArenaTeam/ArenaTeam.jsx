@@ -98,8 +98,8 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
             <hr id="twos"/>
             {robdog2v2Team === undefined ? <div style={{"marginTop": "10rem", "paddingBottom": "2rem"}} className="loader"></div> :
             <section id="2v2">
-                <span className="text">rank: {robdog2v2Team.rank} (2v2)</span>
-           <motion.div className="table-container" id="divider" style={{"marginTop": "10rem"}} initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
+                <span className="text" style={{"marginTop": "10rem"}}>rank: {robdog2v2Team.rank} (2v2)</span>
+           <motion.div className="table-container" id="divider"  initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
                 <table className="arena-table table-hover">
                     <th className="arena-stats tedh">{robdog2v2Team.team.name}</th>
                     <th className="arena-stats tedh">Team Rating: {robdog2v2Team.rating}</th>

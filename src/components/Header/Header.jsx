@@ -1,15 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Header.css";
 import useWindowSize from "../hooks/useWindowSize";
 import DropDown from "../DropDown/DropDown";
 import CharacterDropDown from "../CharacterDropDown/CharacterDropDown";
+import $ from "jquery";
+import Sidebar from "../Sidebar/Sidebar";
+import { Nav } from "react-bootstrap";
 
 function Header() {
   const windowSize = useWindowSize();
-  let mainPath = window.location.pathname === "/robdog" ? "nav-active" : "";
-  let sypPath = window.location.pathname === "/syp" ? "nav-active" : "";
-  let rbdgPath = window.location.pathname === "/rbdg" ? "nav-active" : "";
-  let soyeonPath = window.location.pathname === "/soyeonuwu" ? "nav-active" : "";
+  const [sideBar, setSidebar] = useState(false);
 
 
   function smoothScroll() {
@@ -19,6 +19,14 @@ function Header() {
       block: "start",
     }) : window.location.pathname = "/";
   };
+
+  function NavListItem({href, title}) {
+    return (
+      <h5>
+        <a className={`sidebar-title nav-title ${window.location.pathname === href && "nav-active"}`} href={href}>{title}</a>
+      </h5>
+    )
+  }
 
   return (
     <div className="navv">
@@ -34,27 +42,23 @@ function Header() {
         ) : (
           <DropDown />
         )}
-       
-       
        {windowSize.width >= 1199 ?
-
         <div className="nav-container">
-          <h5>
-            <a className={`sidebar-title nav-title ${mainPath}`} href="/robdog">Main Rogue</a>
-          </h5>
-          <h5>
-            <a className={`sidebar-title nav-title ${soyeonPath}`} href="/soyeonuwu">Horde Rogue</a>
-          </h5>
-          <h5>
-           <a className={`sidebar-title nav-title ${sypPath}`} href="/syp">Alliance Mage</a>
-          </h5>
-          <h5>
-            <a className={`sidebar-title nav-title ${rbdgPath}`} href="/rbdg">Horde Mage</a>
-          </h5>
+          <NavListItem href="/robdog" title="Main Rogue"/>
+          <NavListItem href="/soyeonuwu" title="Horde Rogue"/>
+          <NavListItem href="/syp" title="Alliance Mage"/>
+          <NavListItem href="/rbdg" title="Horde Mage"/>
         </div>
         :
-        <CharacterDropDown />
+        !sideBar &&
+        <button className="arena-team-button" onClick={() => setSidebar(!sideBar)}>
+        Arena Teams 
+        <i style={{"paddingLeft": "6px"}} class="fas fa-arrow-left"></i>
+      </button>
   }
+        {sideBar &&
+          <CharacterDropDown boolean={sideBar} booleanFunction={setSidebar}/>
+        }
         <div className="social-container">
           <ul className="social">
             <a

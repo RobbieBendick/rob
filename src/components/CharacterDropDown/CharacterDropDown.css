@@ -1,59 +1,62 @@
-/* Dropdown List Div */
-div#myCharacterDropdown.show {
+.character-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.character-list {
+  height: 100%;
+}
+
+.character-list ul {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
-
-.character-dropdown {
-  position: relative;
-  display: inline-block;
+.sidebar-header {
+  padding: 1.7rem 0 1.9rem 0;
+  text-decoration: underline;
 }
 
-/* Dropdown Content (Hidden by Default) */
-.character-dropdown-content {
-  display: none;
-  position: absolute;
-  top: 30px;
-  background-color: var(--main-bg-color-inset);
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.character-dropdown-content a {
-  color: var(--text-color-inset-primary) !important;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: inline;
-  cursor: pointer;
-}
-
-.dropdown-title:not(a:last-child)::after {
+#character-sidebar > div.character-list > ul a:not(a:last-child)::after {
   content: '';
   display: block;
   height: 1px;
   width: 4rem;
   background: #c9d1d9;
-  margin: 0.42rem auto 0 auto;
+  margin: 1.6rem auto 0 auto;
   opacity: 1;
 }
-
-.character-dropdown-content a:hover {
-  color: gray;
-}
-
-/* Dropdown Button */
-.character-dropbtn {
+#character-sidebar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 999;
   background-color: var(--main-bg-color);
   color: var(--text-color-inset-primary);
-  border: none;
+  transition: all 0.3s;
 }
 
-.character-dropdown {
+#character-sidebar a {
+  color: var(--text-color-inset-primary);
+  font-size: 20px;
+  padding: 10px 0;
+}
+#character-sidebar a .active-character {
+  color: red !important;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.sidebar-collapse-button button {
   position: absolute;
-  top: 5rem;
-  right: 2%;
+  top: 0;
+  left: 0;
+  background: var(--main-bg-color);
+  color: var(--text-color-inset-primary);
+  border: none;
 }
 
 @media only screen and (max-width: 1199px) {

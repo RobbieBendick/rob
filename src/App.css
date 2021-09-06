@@ -13,7 +13,7 @@
   padding-top: 10rem;
 }
 
-.navbar {
+.navv > .navbar {
   background-color: var(--main-bg-color);
 }
 
@@ -38,5 +38,9 @@ body:not(.sidebar) {
 }
 
 .nav-active {
+  color: rgb(47, 87, 114) !important;
+}
+
+.active-character {
   color: rgb(47, 87, 114) !important;
 }

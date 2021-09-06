@@ -18,6 +18,12 @@
   width: 15%;
 }
 
+.arena-team-button {
+  background: var(--main-bg-color);
+  border: none;
+  color: var(--text-color-inset-primary);
+}
+
 .rob {
   flex-direction: row;
 }
