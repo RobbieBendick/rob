@@ -2,16 +2,14 @@ import React, {useState, useEffect} from "react";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
 import Copyright from "../Copyright/Copyright"
-function Rbdg() {
+function Rbdg({character}) {
     const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
     const [wowPlayer2v2Data, setWowPlayer2v2Data] = useState([]);
     const [rbdg3v3Team, setRbdg3v3Team] = useState(undefined);
     const [rbdg2v2Team, setRbdg2v2Team] = useState(undefined);
-
     const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
 
-    let listOfSidebarContent = ["3v3", "2v2", "ArenaMarker", "DarkTheme", "Raidframes"];
-  
+    let listOfSidebarContent = ["3v3", "2v2"];
     for(let i=0;i < listOfSidebarContent.length; i++){
       if (userScrollingPosition === listOfSidebarContent[i]){
         $(`.${listOfSidebarContent[i]}`).addClass("active")
@@ -28,9 +26,8 @@ function Rbdg() {
     const sections = document.querySelectorAll("section")
     const observer = new IntersectionObserver(function (entries, observer) {
       entries.forEach(entry => {
-        if(!entry.isIntersecting) {
-          return;
-        }
+        if(!entry.isIntersecting) return
+        if(!entry.target.id) return
         setUserScrollingPosition(entry.target.id);
         observer.unobserve(entry.target)
       });
@@ -39,6 +36,35 @@ function Rbdg() {
     sections.forEach(section => {
       observer.observe(section)
     })
+
+    const findRbdg3v3 = () => {
+      for(let i=0; i < wowPlayer3v3Data.length; i++){
+        if (!('members' in wowPlayer3v3Data[i].team)){
+          // no "members" key in team array, move onto the next team
+          continue;
+        }
+        for(let j=0; j < wowPlayer3v3Data[i].team.members.length; j++){
+          if (wowPlayer3v3Data[i].team.members[j].character.name === character) {
+            setRbdg3v3Team(wowPlayer3v3Data[i]);
+            break;
+          }
+        }
+      }
+    }
+    const findRbdg2v2 = () => {
+      for(let i=0; i < wowPlayer2v2Data.length; i++){
+        if (!('members' in wowPlayer2v2Data[i].team)){
+          // no "members" key in team array, move onto the next team
+          continue;
+        }
+        for(let j=0; j < wowPlayer2v2Data[i].team.members.length; j++){
+          if (wowPlayer2v2Data[i].team.members[j].character.name === character) {
+            setRbdg2v2Team(wowPlayer2v2Data[i]);
+            break;
+          }
+        }
+      }
+    }
     
     useEffect(() => {
         let threesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-leaderboard/3v3?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
@@ -57,35 +83,6 @@ function Rbdg() {
         }
     }, [])
 
-    const findRbdg3v3 = () => {
-        for(let i=0; i < wowPlayer3v3Data.length; i++){
-          if (!('members' in wowPlayer3v3Data[i].team)){
-            // no "members" key in team array, move onto the next team
-            continue;
-          }
-          for(let j=0; j < wowPlayer3v3Data[i].team.members.length; j++){
-            if (wowPlayer3v3Data[i].team.members[j].character.name === "Rbdg") {
-              setRbdg3v3Team(wowPlayer3v3Data[i]);
-              break;
-            }
-          }
-        }
-      }
-      const findRbdg2v2 = () => {
-        for(let i=0; i < wowPlayer2v2Data.length; i++){
-          if (!('members' in wowPlayer2v2Data[i].team)){
-            // no "members" key in team array, move onto the next team
-            continue;
-          }
-          for(let j=0; j < wowPlayer2v2Data[i].team.members.length; j++){
-            if (wowPlayer2v2Data[i].team.members[j].character.name === "Rbdg") {
-              setRbdg2v2Team(wowPlayer2v2Data[i]);
-              break;
-            }
-          }
-        }
-      }
-
       useEffect(() => {
         findRbdg3v3();
       }, [wowPlayer3v3Data])
@@ -96,9 +93,9 @@ function Rbdg() {
 
 
     return (
-      <div style={{"paddingTop": "10rem"}}>
-        <h1 className="rob-addon">Rbdg's Active Teams</h1>
-        <ArenaTeam robdog2v2Team={rbdg2v2Team} robdog3v3Team={rbdg3v3Team} robCharacter="Rbdg"/>
+      <div style={{"paddingTop": "5rem"}}>
+        <h1 className="rob-addon">{character}'s Active Teams</h1>
+        <ArenaTeam robdog2v2Team={rbdg2v2Team} robdog3v3Team={rbdg3v3Team} robCharacter={character}/>
       </div>
     )
 }

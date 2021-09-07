@@ -50,7 +50,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
             }, 500);
             setTimeout(() => {
                 $(".unavailable").fadeIn(500, function() {
-                    $(".unavailable").html("Sorry! We could not retrieve an active arena team.").css({paddingTop:"40px",color: "#c9d1d9", fontSize: "35px", textShadow: "0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black,0.05em -0.05em black, 0.05em 0.05em black"})
+                    $(".unavailable").html("Sorry! We could not retrieve an active arena team.").css({paddingTop:"28px",color: "#c9d1d9", fontSize: "35px", textShadow: "0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black,0.05em -0.05em black, 0.05em 0.05em black"})
                 })
             }, 550);
         };

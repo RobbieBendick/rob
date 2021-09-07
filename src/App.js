@@ -17,10 +17,10 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/syp" component={Syp}/>
-          <Route path="/rbdg" component={Rbdg}/>
-          <Route path="/soyeonuwu" component={Soyeonuwu}/>
-          <Route path="/robdog" component={Robdog} />
+          <Route path="/syp" render={(props) => <Syp {...props} character="Syp" />}/>
+          <Route path="/rbdg" render={(props) => <Rbdg {...props} character="Rbdg" />}/>
+          <Route path="/soyeonuwu" render={(props) => <Soyeonuwu {...props} character="Soyeonuwu" />}/>
+          <Route path="/robdog" render={(props) => <Robdog {...props} character="Robdog" />}/>
         </Switch>
         <Copyright />
       </div>
