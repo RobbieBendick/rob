@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import useWindowSize from "../hooks/useWindowSize";
-import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
-import AddonItem from "../AddonItem/AddonItem";
 import Addons from "../Addons/Addons";
 
 

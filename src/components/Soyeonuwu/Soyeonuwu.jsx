@@ -38,10 +38,7 @@ function Soyeonuwu({character}) {
     })
     const findSoyeon3v3 = () => {
       for(let i=0; i < wowPlayer3v3Data.length; i++){
-        if (!('members' in wowPlayer3v3Data[i].team)){
-          // no "members" key in team array, move onto the next team
-          continue;
-        }
+      if (!('members' in wowPlayer3v3Data[i].team)) continue;
         for(let j=0; j < wowPlayer3v3Data[i].team.members.length; j++){
           if (wowPlayer3v3Data[i].team.members[j].character.name === character) {
             setSoyeon3v3Team(wowPlayer3v3Data[i]);
@@ -52,10 +49,7 @@ function Soyeonuwu({character}) {
     }
     const findSoyeon2v2 = () => {
       for(let i=0; i < wowPlayer2v2Data.length; i++){
-        if (!('members' in wowPlayer2v2Data[i].team)){
-          // no "members" key in team array, move onto the next team
-          continue;
-        }
+      if (!('members' in wowPlayer2v2Data[i].team)) continue;
         for(let j=0; j < wowPlayer2v2Data[i].team.members.length; j++){
           if (wowPlayer2v2Data[i].team.members[j].character.name === character) {
             setSoyeon2v2Team(wowPlayer2v2Data[i]);
