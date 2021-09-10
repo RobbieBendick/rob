@@ -95,4 +95,4 @@ function Robdog({character}) {
             )
     }
 
-export default Robdog
+export default Robdog;

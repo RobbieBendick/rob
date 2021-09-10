@@ -4,9 +4,6 @@ import useWindowSize from "../hooks/useWindowSize";
 import $ from "jquery";
 import Addons from "../Addons/Addons";
 
-
-
-
 function Home() {
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
-import Copyright from "../Copyright/Copyright"
+
 function Rbdg({character}) {
     const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
     const [wowPlayer2v2Data, setWowPlayer2v2Data] = useState([]);
