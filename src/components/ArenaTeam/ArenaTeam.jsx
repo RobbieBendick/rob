@@ -9,11 +9,11 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
     const removeHash = () => window.history.pushState("", document.title, `${window.location.pathname}${window.location.search}`);
     if (window.location.hash !== "") removeHash();
 
-    $(window).on('load', function(){
+    $(window).on('load', () => {
         setTimeout(removeLoader, 10*1000); //wait for page load PLUS 10 seconds.
     });
-    function removeLoader(){
-        $( ".loader" ).fadeOut(500, function() {
+    const removeLoader = () => {
+        $( ".loader" ).fadeOut(500, () => {
             // fadeOut complete. Remove the loading div
             $( ".loader" ).remove(); //makes page more lightweight
         });
@@ -21,11 +21,11 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
         // if 2s team doesnt exist then remove from sidebar
         if (!$("#divider").length > 0) {
             // hide 2v2 team
-            $("#twos").fadeOut(500, function() {
+            $("#twos").fadeOut(500, () => {
                 $("#twos").remove();
             });
             // hide sidebar 2v2
-            $(".sidebar ul li:contains('2v2')").fadeOut(500, function() {
+            $(".sidebar ul li:contains('2v2')").fadeOut(500, () => {
                 $(".sidebar ul li:contains('2v2')").remove();
             })
         };
@@ -33,33 +33,33 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
         // if threes team doesnt show up
         if (!$("#threes").length > 0) {
             // hide 3v3 team
-            $("#content-seperator").fadeOut(500, function() {
+            $("#content-seperator").fadeOut(500, () => {
                 $("#content-seperator").remove();
             });
             // hide sidebar 3v3
-            $(".sidebar ul li:contains('3v3')").fadeOut(500, function() {
+            $(".sidebar ul li:contains('3v3')").fadeOut(500, () => {
                 $(".sidebar ul li:contains('3v3')").remove();
             })
         };
         if (!$("#five").length > 0) {
             // hide 5v5 team
-            $("#fives").fadeOut(500, function() {
+            $("#fives").fadeOut(500, () => {
                 $("#fives").remove();
             });
             // hide sidebar 5v5
-            $(".sidebar ul li:contains('5v5')").fadeOut(500, function() {
+            $(".sidebar ul li:contains('5v5')").fadeOut(500, () => {
                 $(".sidebar ul li:contains('5v5')").remove();
             })
         };
 
-        // if threes AND twos AND 5s teams ALL dont show up
-        if (!$("#threes").length > 0 && !$("#divider").length > 0 && !$("#fives").length > 0) {
+        // if 3s AND 2s AND 5s teams ALL dont show up
+        if (!$("#threes").length > 0 && !$("#divider").length > 0 && !$("#five").length > 0) {
             // move footer to bottom, and let user know we couldn't find a team.
             setTimeout(() => {
                 $("#footer").css("position", "absolute").css("bottom", "14px")
             }, 500);
             setTimeout(() => {
-                $(".unavailable").fadeIn(500, function() {
+                $(".unavailable").fadeIn(500, () => {
                     $(".unavailable").html("Sorry! We could not retrieve an active arena team.").css({paddingTop:"28px",color: "#c9d1d9", fontSize: "35px", textShadow: "0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black,0.05em -0.05em black, 0.05em 0.05em black"})
                 })
             }, 550);
