@@ -41,9 +41,19 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                 $(".sidebar ul li:contains('3v3')").remove();
             })
         };
+        if (!$(".five").length > 0) {
+            // hide 5v5 team
+            $("#fives").fadeOut(500, function() {
+                $("#fives").remove();
+            });
+            // hide sidebar 5v5
+            $(".sidebar ul li:contains('5v5')").fadeOut(500, function() {
+                $(".sidebar ul li:contains('5v5')").remove();
+            })
+        };
 
-        // if threes AND twos team BOTH dont show up
-        if (!$("#threes").length > 0 && !$("#divider").length > 0) {
+        // if threes AND twos AND 5s teams ALL dont show up
+        if (!$("#threes").length > 0 && !$("#divider").length > 0 && !$(".five").length > 0) {
             // move footer to bottom, and let user know we couldn't find a team.
             setTimeout(() => {
                 $("#footer").css("position", "absolute").css("bottom", "14px")
@@ -118,17 +128,18 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                 </table>
             </motion.div>
             </section>}
+            <hr id="fives"/>
             {robdog5v5Team === undefined ? <div style={{"marginTop": "10rem", "paddingBottom": "2rem"}} className="loader"></div> :
             <section id="5v5">
-                <span className="text" style={{"marginTop": "10rem"}}>rank: {robdog2v2Team.rank} (2v2)</span>
-           <motion.div className="table-container" id="divider"  initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
+                <span className="text" style={{"marginTop": "10rem"}}>rank: {robdog5v5Team.rank} (5v5)</span>
+           <motion.div className="table-container" id="five" initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
                 <table className="arena-table table-hover">
                     <th className="arena-stats tedh">{robdog5v5Team.team.name}</th>
                     <th className="arena-stats tedh">Team Rating: {robdog5v5Team.rating}</th>
                     <th className="arena-stats tedh">W: {robdog5v5Team.season_match_statistics.won}</th>
                     <th className="arena-stats tedh">L: {robdog5v5Team.season_match_statistics.lost}</th>
                     <th className="arena-stats tedh">Total: {robdog5v5Team.season_match_statistics.played}</th>
-                    <th className="arena-stats tedh">W/L: {Math.round(robdog5v5Team.season_match_statistics.won / robdog2v2Team.season_match_statistics.played * 100 * 10) / 10}%</th>
+                    <th className="arena-stats tedh">W/L: {Math.round(robdog5v5Team.season_match_statistics.won / robdog5v5Team.season_match_statistics.played * 100 * 10) / 10}%</th>
                     <tbody>
                         {robdog5v5Team.team.members.map((member, index) => (
                             member.character.name === robCharacter ?

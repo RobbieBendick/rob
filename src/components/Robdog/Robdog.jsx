@@ -11,54 +11,43 @@ function Robdog({character}) {
     const [robdog2v2Team, setRobdog2v2Team] = useState(undefined);
     const [robdog5v5Team, setRobdog5v5Team] = useState(undefined);
     const [isFetching, setIsFetching] = useState(false);
-    // const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
+    const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
 
-    // let listOfSidebarContent = ["3v3", "2v2"];
+    let listOfSidebarContent = ["3v3", "2v2", "5v5"];
   
-    // for(let i=0;i < listOfSidebarContent.length; i++){
-    //   if (userScrollingPosition === listOfSidebarContent[i]){
-    //     $(`.${listOfSidebarContent[i]}`).addClass("active")
-    //   } else {
-    //     $(`.${listOfSidebarContent[i]}`).removeClass("active")
-    //   }
-    // }
-
-    // const options = {
-    //   root: null, // it is the viewport
-    //   threshold: 0.6,
-    //   rootMargin: "-55px"
-    // }
-    // const sections = document.querySelectorAll("section")
-    // const observer = new IntersectionObserver(function (entries, observer) {
-    //   entries.forEach(entry => {
-    //     if(!entry.isIntersecting) return
-    //     if(!entry.target.id) return
-    //     setUserScrollingPosition(entry.target.id);
-    //     observer.unobserve(entry.target)
-    //   });
-    // }, options);
-  
-    // sections.forEach(section => {
-    //   observer.observe(section)
-    // })
-
-    const findRobdog = (table, setTeam) => {
-      for(let i=0; i < table.length; i++){
-        if (!('members' in table[i].team)) continue;
-        for(let j=0; j < table[i].team.members.length; j++){
-          if (table[i].team.members[j].character.name === character) {
-            setTeam(table[i]);
-            break;
-          }
-        }
+    for(let i=0;i < listOfSidebarContent.length; i++){
+      if (userScrollingPosition === listOfSidebarContent[i]){
+        $(`.${listOfSidebarContent[i]}`).addClass("active")
+      } else {
+        $(`.${listOfSidebarContent[i]}`).removeClass("active")
       }
     }
+
+    const options = {
+      root: null, // it is the viewport
+      threshold: 0.6,
+      rootMargin: "-55px"
+    }
+    const sections = document.querySelectorAll("section")
+    const observer = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return
+        if(!entry.target.id) return
+        setUserScrollingPosition(entry.target.id);
+        observer.unobserve(entry.target)
+      });
+    }, options);
+  
+    sections.forEach(section => {
+      observer.observe(section)
+    })
+
     useEffect(() => {
       let threesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-leaderboard/3v3?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
       let twosUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-leaderboard/2v2?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
       let fivesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-leaderboard/5v5?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
       async function myFetch(url){
-        setIsFetching(true)
+        setIsFetching(true);
         let response = await fetch(url);
         return await response.json();
       }
@@ -74,21 +63,24 @@ function Robdog({character}) {
         myFetch(fivesUrl)
         .then(res => setWowPlayer5v5Data(res.entries))
       }
-    }, [wowPlayer3v3Data, wowPlayer2v2Data, wowPlayer5v5Data]); 
+    }, [wowPlayer3v3Data, wowPlayer2v2Data, wowPlayer5v5Data, isFetching]); 
   
     useEffect(() => {
-      findRobdog(wowPlayer3v3Data, setRobdog3v3Team);
-    }, [wowPlayer3v3Data])
-  
-    useEffect(() => {
+      const findRobdog = (table, setTeam) => {
+        for(let i=0; i < table.length; i++){
+          if (!('members' in table[i].team)) continue;
+          for(let j=0; j < table[i].team.members.length; j++){
+            if (table[i].team.members[j].character.name === character) {
+              setTeam(table[i]);
+              break;
+            }
+          }
+        }
+      }
       findRobdog(wowPlayer2v2Data, setRobdog2v2Team);
-    }, [wowPlayer2v2Data])
-
-    useEffect(() => {
-
+      findRobdog(wowPlayer3v3Data, setRobdog3v3Team);
       findRobdog(wowPlayer5v5Data, setRobdog5v5Team);
-    }, [wowPlayer5v5Data])
-
+    }, [wowPlayer3v3Data, wowPlayer2v2Data, wowPlayer5v5Data, character]);
 
     return (
             <div style={{"paddingTop": "5rem"}}>

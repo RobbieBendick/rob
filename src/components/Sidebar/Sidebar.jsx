@@ -22,6 +22,7 @@ function Sidebar() {
           <>
           <AltListItem title="3v3 team" href="App"/>
           <AltListItem title="2v2 team" href="twos"/>
+          <AltListItem title="5v5 team" href="fives"/>
           </>}
         </ul>
       </div>
