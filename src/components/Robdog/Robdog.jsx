@@ -11,36 +11,36 @@ function Robdog({character}) {
     const [robdog2v2Team, setRobdog2v2Team] = useState(undefined);
     const [robdog5v5Team, setRobdog5v5Team] = useState(undefined);
     const [isFetching, setIsFetching] = useState(false);
-    const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
+    // const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
 
-    let listOfSidebarContent = ["3v3", "2v2", "5v5"];
+    // let listOfSidebarContent = ["3v3", "2v2", "5v5"];
   
-    for(let i=0;i < listOfSidebarContent.length; i++){
-      if (userScrollingPosition === listOfSidebarContent[i]){
-        $(`.${listOfSidebarContent[i]}`).addClass("active")
-      } else {
-        $(`.${listOfSidebarContent[i]}`).removeClass("active")
-      }
-    }
+    // for(let i=0;i < listOfSidebarContent.length; i++){
+    //   if (userScrollingPosition === listOfSidebarContent[i]){
+    //     $(`.${listOfSidebarContent[i]}`).addClass("active")
+    //   } else {
+    //     $(`.${listOfSidebarContent[i]}`).removeClass("active")
+    //   }
+    // }
 
-    const options = {
-      root: null, // it is the viewport
-      threshold: 0.6,
-      rootMargin: "-55px"
-    }
-    const sections = document.querySelectorAll("section")
-    const observer = new IntersectionObserver(function (entries, observer) {
-      entries.forEach(entry => {
-        if(!entry.isIntersecting) return
-        if(!entry.target.id) return
-        setUserScrollingPosition(entry.target.id);
-        observer.unobserve(entry.target)
-      });
-    }, options);
+    // const options = {
+    //   root: null, // it is the viewport
+    //   threshold: 0.6,
+    //   rootMargin: "-55px"
+    // }
+    // const sections = document.querySelectorAll("section")
+    // const observer = new IntersectionObserver(function (entries, observer) {
+    //   entries.forEach(entry => {
+    //     if(!entry.isIntersecting) return
+    //     if(!entry.target.id) return
+    //     setUserScrollingPosition(entry.target.id);
+    //     observer.unobserve(entry.target)
+    //   });
+    // }, options);
   
-    sections.forEach(section => {
-      observer.observe(section)
-    })
+    // sections.forEach(section => {
+    //   observer.observe(section)
+    // })
 
     useEffect(() => {
       let threesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-leaderboard/3v3?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;

@@ -41,10 +41,10 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                 $(".sidebar ul li:contains('3v3')").remove();
             })
         };
-        if (!$(".five").length > 0) {
+        if (!$("#five").length > 0) {
             // hide 5v5 team
-            $("#fives").fadeOut(500, function() {
-                $("#fives").remove();
+            $("#five").fadeOut(500, function() {
+                $("#five").remove();
             });
             // hide sidebar 5v5
             $(".sidebar ul li:contains('5v5')").fadeOut(500, function() {
@@ -53,7 +53,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
         };
 
         // if threes AND twos AND 5s teams ALL dont show up
-        if (!$("#threes").length > 0 && !$("#divider").length > 0 && !$(".five").length > 0) {
+        if (!$("#threes").length > 0 && !$("#divider").length > 0 && !$("#fives").length > 0) {
             // move footer to bottom, and let user know we couldn't find a team.
             setTimeout(() => {
                 $("#footer").css("position", "absolute").css("bottom", "14px")
