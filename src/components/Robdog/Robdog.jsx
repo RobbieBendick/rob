@@ -65,17 +65,14 @@ function Robdog({character}) {
       if (wowPlayer3v3Data.length === 0 && !isFetching) {
         myFetch(threesUrl)
         .then(res => setWowPlayer3v3Data(res.entries))
-        .then(setIsFetching(false));
       }
       if (wowPlayer2v2Data.length === 0 && !isFetching) {
         myFetch(twosUrl)
         .then(res => setWowPlayer2v2Data(res.entries))
-        .then(setIsFetching(false));
       }
       if (wowPlayer5v5Data.length === 0 && !isFetching) {
         myFetch(fivesUrl)
         .then(res => setWowPlayer5v5Data(res.entries))
-        .then(setIsFetching(false));
       }
     }, [wowPlayer3v3Data, wowPlayer2v2Data, wowPlayer5v5Data]); 
   
