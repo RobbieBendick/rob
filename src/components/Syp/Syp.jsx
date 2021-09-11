@@ -75,15 +75,15 @@ function Syp({character}) {
   
     useEffect(() => {
       findSyp(wowPlayer3v3Data, setSyp3v3Team);
-    }, [wowPlayer3v3Data])
+    }, [])
   
     useEffect(() => {
       findSyp(wowPlayer2v2Data, setSyp2v2Team);
-    }, [wowPlayer2v2Data])
+    }, [])
 
     useEffect(() => {
       findSyp(wowPlayer5v5Data, setSyp5v5Team);
-    }, [wowPlayer5v5Data])
+    }, [])
 
 
     return (
