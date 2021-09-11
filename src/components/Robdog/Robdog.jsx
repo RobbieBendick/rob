@@ -12,6 +12,7 @@ function Robdog({character}) {
     const [robdog5v5Team, setRobdog5v5Team] = useState(undefined);
     const [isFetching, setIsFetching] = useState(false);
     const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
+    const [threesCutOff, setThreesCutOff] = useState(0);
 
     let listOfSidebarContent = ["3v3", "2v2", "5v5"];
   
@@ -82,8 +83,20 @@ function Robdog({character}) {
       findRobdog(wowPlayer5v5Data, setRobdog5v5Team);
     }, [wowPlayer3v3Data, wowPlayer2v2Data, wowPlayer5v5Data, character]);
 
+    useEffect(() => {
+      async function fetcher() {
+        let response = await fetch(`https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-reward/index?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`)
+        return await response.json()
+      }
+      if (threesCutOff === 0) {
+        fetcher()
+        .then(res => setThreesCutOff(res.rewards[5].rating_cutoff));
+      }
+    }, [])
+
     return (
             <div style={{"paddingTop": "5rem"}}>
+                <span className="addon-title">3s R1 CUTOFF: {threesCutOff} </span>
                 <h1 className="rob-addon">{character}'s Active Teams</h1>
                 <ArenaTeam robdog2v2Team={robdog2v2Team} robdog3v3Team={robdog3v3Team} robdog5v5Team={robdog5v5Team} robCharacter={character}/>
             </div>
