@@ -3,7 +3,7 @@ import "./ArenaTeam.css";
 import { motion } from "framer-motion";
 import $ from "jquery";
 
-function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
+function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) {
 
     // removes /"#id"
     const removeHash = () => window.history.pushState("", document.title, `${window.location.pathname}${window.location.search}`);
@@ -109,6 +109,28 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robCharacter}) {
                     <th className="arena-stats tedh">W/L: {Math.round(robdog2v2Team.season_match_statistics.won / robdog2v2Team.season_match_statistics.played * 100 * 10) / 10}%</th>
                     <tbody>
                         {robdog2v2Team.team.members.map((member, index) => (
+                            member.character.name === robCharacter ?
+                            <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={true} />
+                           :
+                            <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost}/> 
+                        ))}
+                    </tbody>
+                </table>
+            </motion.div>
+            </section>}
+            {robdog5v5Team === undefined ? <div style={{"marginTop": "10rem", "paddingBottom": "2rem"}} className="loader"></div> :
+            <section id="5v5">
+                <span className="text" style={{"marginTop": "10rem"}}>rank: {robdog2v2Team.rank} (2v2)</span>
+           <motion.div className="table-container" id="divider"  initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
+                <table className="arena-table table-hover">
+                    <th className="arena-stats tedh">{robdog5v5Team.team.name}</th>
+                    <th className="arena-stats tedh">Team Rating: {robdog5v5Team.rating}</th>
+                    <th className="arena-stats tedh">W: {robdog5v5Team.season_match_statistics.won}</th>
+                    <th className="arena-stats tedh">L: {robdog5v5Team.season_match_statistics.lost}</th>
+                    <th className="arena-stats tedh">Total: {robdog5v5Team.season_match_statistics.played}</th>
+                    <th className="arena-stats tedh">W/L: {Math.round(robdog5v5Team.season_match_statistics.won / robdog2v2Team.season_match_statistics.played * 100 * 10) / 10}%</th>
+                    <tbody>
+                        {robdog5v5Team.team.members.map((member, index) => (
                             member.character.name === robCharacter ?
                             <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={true} />
                            :
