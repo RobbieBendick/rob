@@ -96,7 +96,7 @@ function Robdog({character}) {
 
     return (
             <div style={{"paddingTop": "5rem"}}>
-                <span className="addon-title">3s R1 CUTOFF: {threesCutOff} </span>
+                <span className="addon-title">3s r1 cutoff: {threesCutOff} </span>
                 <h1 className="rob-addon">{character}'s Active Teams</h1>
                 <ArenaTeam robdog2v2Team={robdog2v2Team} robdog3v3Team={robdog3v3Team} robdog5v5Team={robdog5v5Team} robCharacter={character}/>
             </div>
