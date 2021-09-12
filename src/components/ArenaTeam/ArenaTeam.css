@@ -5,6 +5,7 @@
 .text {
   text-shadow: var(--text-visibility);
   color: var(--text-color-inset-primary);
+  font-size: 1.2rem;
 }
 
 .arena-stats {
@@ -44,6 +45,9 @@ table {
   text-shadow: var(--text-visibility);
   font-family: 'Signika Negative', sans-serif;
   letter-spacing: 0.9px;
+}
+
+.unavailable > section > div {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4), 8px 8px 15px rgba(0, 0, 0, 0.7);
 }

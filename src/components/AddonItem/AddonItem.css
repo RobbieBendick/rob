@@ -52,7 +52,6 @@ a:not([href]).collapsible:hover {
   text-align: center;
   outline: none;
   font-size: 15px;
-  margin-bottom: 1rem;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -82,15 +81,16 @@ a:not([href]).collapsible:hover {
 }
 
 .card img {
+  background-size: cover;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
-  width: 478px;
+  width: 448px;
   height: 11rem;
 }
 
 .card {
   border-radius: 25px;
-  width: 480px;
+  width: 450px;
   margin: 0 auto;
   background: gray;
   margin: 50px auto 50px auto;
@@ -129,10 +129,11 @@ a:not([href]).collapsible:hover {
 
 @media only screen and (max-width: 1500px) {
   .card {
-    width: 350px;
+    width: 310px;
+    height: 400px;
   }
   .card img {
-    width: 350px;
+    width: 308px;
   }
   .addon-link {
     right: 29.3%;

@@ -9,6 +9,8 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
     const removeHash = () => window.history.pushState("", document.title, `${window.location.pathname}${window.location.search}`);
     if (window.location.hash !== "") removeHash();
 
+
+    // remove arena team categories that dont show up
     $(window).on('load', () => {
         setTimeout(removeLoader, 10*1000); //wait for page load PLUS 10 seconds.
     });
@@ -18,7 +20,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
             $( ".loader" ).remove(); //makes page more lightweight
         });
 
-        // if 2s team doesnt exist then remove from sidebar
+        // if 2s team doesnt show up
         if (!$("#divider").length > 0) {
             // hide 2v2 team
             $("#twos").fadeOut(500, () => {
@@ -41,6 +43,8 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                 $(".sidebar ul li:contains('3v3')").remove();
             })
         };
+
+        // if fives team doesnt show up
         if (!$("#five").length > 0) {
             // hide 5v5 team
             $("#fives").fadeOut(500, () => {
@@ -52,7 +56,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
             })
         };
 
-        // if 3s AND 2s AND 5s teams ALL dont show up
+        // if 2s AND 3s AND 5s teams ALL dont show up
         if (!$("#threes").length > 0 && !$("#divider").length > 0 && !$("#five").length > 0) {
             // move footer to bottom, and let user know we couldn't find a team.
             setTimeout(() => {
@@ -66,9 +70,8 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
         };
     };
 
-
     const ArenaMember = ({name, rating, played, wins, losses, robdog}) => {
-     
+
         let winLossRatio = Math.round(wins / played * 100 * 10) / 10;
         return (
             <tr className={ robdog ? "arena-member robdog-border" : "arena-member"}>
@@ -96,10 +99,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                         <th>W/L: {Math.round(robdog3v3Team.season_match_statistics.won / robdog3v3Team.season_match_statistics.played * 100 * 10) / 10}%</th>
                         <tbody>
                             {robdog3v3Team.team.members.map((member, index) => (
-                                member.character.name === robCharacter ?
-                                <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={true} />
-                                :
-                                <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={false}/> 
+                                <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={member.character.name === robCharacter && true}  />
                             ))}
                         </tbody>
                     </table>
@@ -119,10 +119,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                         <th className="arena-stats tedh">W/L: {Math.round(robdog2v2Team.season_match_statistics.won / robdog2v2Team.season_match_statistics.played * 100 * 10) / 10}%</th>
                         <tbody>
                             {robdog2v2Team.team.members.map((member, index) => (
-                                member.character.name === robCharacter ?
-                                <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={true} />
-                            :
-                                <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost}/> 
+                               <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={member.character.name === robCharacter && true}  />
                             ))}
                         </tbody>
                     </table>
@@ -132,24 +129,21 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
             {robdog5v5Team === undefined ? <div style={{"marginTop": "10rem", "paddingBottom": "2rem"}} className="loader"></div> :
             <section id="5v5">
                 <span className="text" style={{"marginTop": "10rem"}}>rank: {robdog5v5Team.rank} (5v5)</span>
-           <motion.div className="table-container" id="five" initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
-                <table className="arena-table table-hover">
-                    <th className="arena-stats tedh">{robdog5v5Team.team.name}</th>
-                    <th className="arena-stats tedh">Team Rating: {robdog5v5Team.rating}</th>
-                    <th className="arena-stats tedh">W: {robdog5v5Team.season_match_statistics.won}</th>
-                    <th className="arena-stats tedh">L: {robdog5v5Team.season_match_statistics.lost}</th>
-                    <th className="arena-stats tedh">Total: {robdog5v5Team.season_match_statistics.played}</th>
-                    <th className="arena-stats tedh">W/L: {Math.round(robdog5v5Team.season_match_statistics.won / robdog5v5Team.season_match_statistics.played * 100 * 10) / 10}%</th>
-                    <tbody>
-                        {robdog5v5Team.team.members.map((member, index) => (
-                            member.character.name === robCharacter ?
-                            <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={true} />
-                           :
-                            <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost}/> 
-                        ))}
-                    </tbody>
-                </table>
-            </motion.div>
+                <motion.div className="table-container" id="five" initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
+                    <table className="arena-table table-hover">
+                        <th className="arena-stats tedh">{robdog5v5Team.team.name}</th>
+                        <th className="arena-stats tedh">Team Rating: {robdog5v5Team.rating}</th>
+                        <th className="arena-stats tedh">W: {robdog5v5Team.season_match_statistics.won}</th>
+                        <th className="arena-stats tedh">L: {robdog5v5Team.season_match_statistics.lost}</th>
+                        <th className="arena-stats tedh">Total: {robdog5v5Team.season_match_statistics.played}</th>
+                        <th className="arena-stats tedh">W/L: {Math.round(robdog5v5Team.season_match_statistics.won / robdog5v5Team.season_match_statistics.played * 100 * 10) / 10}%</th>
+                        <tbody>
+                            {robdog5v5Team.team.members.map((member, index) => (
+                              <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={member.character.name === robCharacter && true}  />
+                            ))}
+                        </tbody>
+                    </table>
+                </motion.div>
             </section>}
         </div>
     )

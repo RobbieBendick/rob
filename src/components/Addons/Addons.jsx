@@ -20,7 +20,7 @@ function Addons() {
                   addonTitle="DarkTheme"
                   imgSrc="/images/placeholder.png"
                   addonSrc="https://github.com/RobbieBendick/darktheme"
-                  addonDescription="Darkens frames, target/focus/pet portraits, and cleans up clutter from the minimap."
+                  addonDescription="Darkens frames, target/focus/pet portraits, and cleans up minimap clutter."
                   key="2"
                   id="raidframes"
                   alt="darktheme-img"
