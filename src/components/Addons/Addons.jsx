@@ -18,7 +18,7 @@ function Addons() {
                 />
                 <AddonItem
                   addonTitle="DarkTheme"
-                  imgSrc="/images/placeholder.png"
+                  imgSrc="/images/abcde.png"
                   addonSrc="https://github.com/RobbieBendick/darktheme"
                   addonDescription="Darkens frames, target/focus/pet portraits, and cleans up minimap clutter."
                   key="2"
@@ -26,13 +26,13 @@ function Addons() {
                   alt="darktheme-img"
                 />
                 <AddonItem
-                  addonTitle="Raidframes"
-                  imgSrc="/images/placeholder.png"
-                  addonSrc=""
-                  addonDescription="Switches between preset Raid-Frame profiles depending on group size."
+                  addonTitle="Arena Frames"
+                  imgSrc="/images/gladdy.png"
+                  addonSrc="https://www.curseforge.com/wow/addons/gladdy-tbc"
+                  addonDescription="Customizable arena frames with cooldown and DR trackers."
                   key="3"
                   id="unitframes"
-                  alt="raidframes-img"
+                  alt="gladdy-img"
                   last={true}
                 />
                 </ul>

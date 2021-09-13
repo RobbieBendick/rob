@@ -16,7 +16,7 @@ function Sidebar() {
           <>
           <ListItem title="ArenaMarker" href="chat" />
           <ListItem title="DarkTheme" href="raidframes" />
-          <ListItem title="Raidframes" href="footer" />
+          <ListItem title="Arena Frames" href="footer" />
           </>
           :
           <>
@@ -33,10 +33,15 @@ function Sidebar() {
 }
 
 function AltListItem({ title, href }) {
+  var newAddonTitle = ""
+  if (/\s/.test(title)) {
+    // It has any kind of whitespace
+    newAddonTitle = title.split(" ").join("");
+  }
   return (
     <li className="sidebar-item">
       <h5 className="sidebar-heading justify-content-between align-items-center mt-4 mb-4">
-        <a href={`#${href}`} className={`nav-link sidebar-title ${title}`}>
+        <a href={`#${href}`} className={`nav-link sidebar-title ${newAddonTitle !== "" ? newAddonTitle : title}`}>
           {title}
         </a>
       </h5>
@@ -51,10 +56,15 @@ function ListItem({ title, href }) {
       block: "end",
     });
   }
+  var newAddonTitle = ""
+  if (/\s/.test(title)) {
+    // It has any kind of whitespace
+    newAddonTitle = title.split(" ").join("");
+  }
   return (
     <li className="sidebar-item">
       <h5 className="sidebar-heading justify-content-between align-items-center mt-4 mb-4">
-        <a onClick={smoothScroll} className={`nav-link sidebar-title ${title} ${title === "ArenaMarker" && "active"}`}>
+        <a onClick={smoothScroll} className={`nav-link sidebar-title ${newAddonTitle !== "" ? newAddonTitle : title} ${title === "ArenaMarker" && "active"}`}>
           {title}
         </a>
       </h5>

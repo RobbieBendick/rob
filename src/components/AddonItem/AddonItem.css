@@ -33,7 +33,7 @@ a:not([href]).collapsible:hover {
 .addon-link {
   position: absolute;
   bottom: 3%;
-  right: 36.8%;
+  right: 39.7%;
   color: #c9d1d9 !important;
   text-decoration: underline !important;
   cursor: pointer;
@@ -75,7 +75,7 @@ a:not([href]).collapsible:hover {
 .card-body {
   text-shadow: var(--text-visibility);
   text-align: center;
-  background-color: #161b22;
+  background-color: var(--main-bg-color);
   border-bottom-right-radius: 25px;
   border-bottom-left-radius: 25px;
 }
@@ -84,13 +84,14 @@ a:not([href]).collapsible:hover {
   background-size: cover;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
-  width: 448px;
-  height: 11rem;
+  height: 12rem;
+  object-fit: scale-down;
+  background: var(--main-bg-color-light);
 }
 
 .card {
   border-radius: 25px;
-  width: 450px;
+  width: 650px;
   margin: 0 auto;
   background: gray;
   margin: 50px auto 50px auto;
@@ -127,15 +128,28 @@ a:not([href]).collapsible:hover {
   text-shadow: var(--text-visibility);
 }
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1199px) {
   .card {
-    width: 310px;
+    width: 510px;
     height: 400px;
   }
   .card img {
-    width: 308px;
+    width: 508px;
   }
   .addon-link {
-    right: 29.3%;
+    right: 36.3%;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .card {
+    width: 350px;
+    height: 450px;
+  }
+  .card img {
+    width: 348px;
+  }
+  .addon-link {
+    right: 30.3%;
   }
 }

@@ -13,10 +13,14 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
   } else {
     buttons.push(<i className="fas fa-plus"></i>);
   }
-
+  var newAddonTitle = ""
+  if (/\s/.test(addonTitle)) {
+    // It has any kind of whitespace
+    newAddonTitle = addonTitle.split(" ").join("");
+  }
   return (
     <>
-    <section id={toggle && addonTitle}>
+    <section id={toggle ? newAddonTitle === "" ? addonTitle : newAddonTitle : ""}>
       {!toggle ? (
         <motion.div
           initial={{ opacity: 0 }}
@@ -47,7 +51,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
       </a>
       {toggle ? (
         <SmoothCollapse expanded={true} heightTransition="0.6s ease">
-          <motion.div whileHover={{scale: 1.07}} transition={{duration: 0.45}} className="card">
+          <motion.div whileHover={{scale: 1.07}} transition={{duration: 0.45}} className="card mb-3">
             <img className="card-img-top" src={imgSrc} alt={alt} />
             <div className="card-body">
               <h2 className="card-title addon-title">{addonTitle}</h2>
@@ -59,7 +63,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
         </SmoothCollapse>
       ) : (
         <SmoothCollapse expanded={false} heightTransition="0.6s ease">
-          <div className="card">
+          <div className="card mb-3">
             <img className="card-img-top" src={imgSrc} alt={alt} />
             <div className="card-body">
             <h2 className="card-title addon-title">{addonTitle}</h2>

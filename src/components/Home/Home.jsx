@@ -17,7 +17,7 @@ function Home() {
   const windowSize = useWindowSize();
   const [userScrollingPosition, setUserScrollingPosition] = useState("ArenaMarker");
 
-  let listOfSidebarContent = ["ArenaMarker", "DarkTheme", "Raidframes"];
+  let listOfSidebarContent = ["ArenaMarker", "DarkTheme", "ArenaFrames"];
 
   for(let i=0;i < listOfSidebarContent.length; i++){
     if (userScrollingPosition === listOfSidebarContent[i]){
@@ -70,10 +70,7 @@ function Home() {
   );
 }
 
-function HomeView({
-  wowPlayer3v3Data,
-  robdog3v3Team,
-  robdog2v2Team}) {
+function HomeView() {
 
   return (
     <div id="rob" className="pad">
