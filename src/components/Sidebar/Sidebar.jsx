@@ -37,7 +37,11 @@ function AltListItem({ title, href }) {
   var newAddonTitle = ""
   if (/\s/.test(title)) {
     // It has any kind of whitespace
-    newAddonTitle = title.split(" ").join("");
+    if (!title.split(" ")[0] === "3v3" || "2v2" || "5v5"){
+      // if the first word of the title is 3v3 or 2v2 or 5v5
+      newAddonTitle = title.split(" ")[0];
+    }
+
   }
   return (
     <li className="sidebar-item">

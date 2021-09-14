@@ -3,9 +3,7 @@ import "./DropDown.css";
 
 
 function DropDown() {
-  let home = window.location.pathname === "/" ? true : false;
-
-
+  let home = window.location.pathname === "/";
   return (
     <div className="dropdown">
       <button

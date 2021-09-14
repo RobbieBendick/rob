@@ -157,5 +157,4 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
     )
 }
 
-
 export default ArenaTeam;
