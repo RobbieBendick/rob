@@ -25,7 +25,7 @@ function DropDown() {
         <>
         <DropDownListItem title="ArenaMarker" href="#chat" />
         <DropDownListItem title="DarkTheme" href="#raidframes" />
-        <DropDownListItem title="Raidframes" href="#footer"/>
+        <DropDownListItem title="Arena Frames" href="#footer"/>
         </>
         :
         <>

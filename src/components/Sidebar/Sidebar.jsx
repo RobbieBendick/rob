@@ -4,8 +4,9 @@ import useWindowSize from "../hooks/useWindowSize";
 import $ from "jquery";
 
 function Sidebar() {
+
   const windowSize = useWindowSize();
-  let home = window.location.pathname === "/" ? true : false;
+  let home = window.location.pathname === "/";
   return (
     <>
     {windowSize.width >= 1199 && (

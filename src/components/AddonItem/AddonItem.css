@@ -86,6 +86,7 @@ a:not([href]).collapsible:hover {
   border-top-left-radius: 25px;
   height: 12rem;
   object-fit: scale-down;
+  object-position: center;
   background: var(--main-bg-color-light);
 }
 

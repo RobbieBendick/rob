@@ -5,7 +5,7 @@ import $ from "jquery";
 
 function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) {
 
-    // removes /"#id"
+    // removes /"#id" from user's browser
     const removeHash = () => window.history.pushState("", document.title, `${window.location.pathname}${window.location.search}`);
     if (window.location.hash !== "") removeHash();
 
@@ -58,11 +58,19 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
 
         // if 2s AND 3s AND 5s teams ALL dont show up
         if (!$("#threes").length > 0 && !$("#divider").length > 0 && !$("#five").length > 0) {
-            // move footer to bottom, and let user know we couldn't find a team.
+            // move footer to bottom
             setTimeout(() => {
                 $("#footer").css("position", "absolute").css("bottom", "14px")
             }, 500);
             setTimeout(() => {
+                // if sidebar doesn't have any content
+                if ($("ul.rob li").length === 0) {
+                    // add 'home' to sidebar
+                    var homeSideBarButton = $("<li style='padding-top: 22px' class='sidebar-item'><h5><a href='/' class='nav-link sidebar-title'>Home</a></h5></li>").hide();
+                    $("ul.rob").append(homeSideBarButton);
+                    homeSideBarButton.fadeIn(500)
+                };
+                // let user know we couldn't find a team.
                 $(".unavailable").fadeIn(500, () => {
                     $(".unavailable").html("Sorry! We could not retrieve an active arena team.").css({paddingTop:"28px",color: "#c9d1d9", fontSize: "35px", textShadow: "0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black,0.05em -0.05em black, 0.05em 0.05em black"})
                 })

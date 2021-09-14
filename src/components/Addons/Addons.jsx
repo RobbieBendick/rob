@@ -14,7 +14,7 @@ function Addons() {
                   addonDescription="Gives you and your party members Raid Target Markers based on their class in arena."
                   key="1"
                   id="rob"
-                  alt="addonmarker-img"
+                  alt="arenamarker-img"
                 />
                 <AddonItem
                   addonTitle="DarkTheme"
@@ -29,7 +29,7 @@ function Addons() {
                   addonTitle="Arena Frames"
                   imgSrc="/images/gladdy.png"
                   addonSrc="https://www.curseforge.com/wow/addons/gladdy-tbc"
-                  addonDescription="Customizable arena frames with cooldown and DR trackers."
+                  addonDescription="(Gladdy) Customizable arena frames with cooldown and DR trackers."
                   key="3"
                   id="unitframes"
                   alt="gladdy-img"
