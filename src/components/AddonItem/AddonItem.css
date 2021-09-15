@@ -81,13 +81,33 @@ a:not([href]).collapsible:hover {
 }
 
 .card img {
+  background: rgb(13, 16, 19);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(13, 16, 19, 1) 9%,
+    rgba(23, 30, 41, 1) 63%,
+    rgba(14, 16, 19, 1) 91%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(13, 16, 19, 1) 9%,
+    rgba(23, 30, 41, 1) 63%,
+    rgba(14, 16, 19, 1) 91%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(13, 16, 19, 1) 9%,
+    rgba(23, 30, 41, 1) 63%,
+    rgba(14, 16, 19, 1) 91%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0d1013",endColorstr="#0e1013",GradientType=1);
+  background-blend-mode: soft-light;
   background-size: cover;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
   height: 12rem;
   object-fit: scale-down;
   object-position: center;
-  background: var(--main-bg-color-light);
 }
 
 .card {

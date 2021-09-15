@@ -27,7 +27,7 @@ function App() {
        {/* background img */}
        <img
         className="background-img"
-        src="/images/wes.jpg"
+        src="/images/smoke-bg.jpg"
         alt="backround-img"
       ></img>
     </Router>
