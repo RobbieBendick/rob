@@ -29,7 +29,11 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
             // hide sidebar 2v2
             $(".sidebar ul li:contains('2v2')").fadeOut(500, () => {
                 $(".sidebar ul li:contains('2v2')").remove();
-            })
+            });
+            // hide mobile sidebar 2v2
+            $("#myDropdown > a.dropdown-title:contains('2v2')").fadeOut(500, () => {
+                $("#myDropdown > a.dropdown-title:contains('2v2')").remove();
+            });
         };
 
         // if threes team doesnt show up
@@ -41,7 +45,11 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
             // hide sidebar 3v3
             $(".sidebar ul li:contains('3v3')").fadeOut(500, () => {
                 $(".sidebar ul li:contains('3v3')").remove();
-            })
+            });
+            // hide mobile sidebar 3v3
+            $("#myDropdown > a.dropdown-title:contains('3v3')").fadeOut(500, () => {
+                $("#myDropdown > a.dropdown-title:contains('3v3')").remove();
+            });
         };
 
         // if fives team doesnt show up
@@ -53,7 +61,11 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
             // hide sidebar 5v5
             $(".sidebar ul li:contains('5v5')").fadeOut(500, () => {
                 $(".sidebar ul li:contains('5v5')").remove();
-            })
+            });
+            // hide mobile sidebar 5v5
+            $("#myDropdown > a.dropdown-title:contains('5v5')").fadeOut(500, () => {
+                $("#myDropdown > a.dropdown-title:contains('5v5')").remove();
+            });
         };
 
         // if 2s AND 3s AND 5s teams ALL dont show up
@@ -73,7 +85,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                 // let user know we couldn't find a team.
                 $(".unavailable").fadeIn(500, () => {
                     $(".unavailable").html("Sorry! We could not retrieve an active arena team.").css({paddingTop:"28px",color: "#c9d1d9", fontSize: "35px", textShadow: "0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black,0.05em -0.05em black, 0.05em 0.05em black"})
-                })
+                });
             }, 550);
         };
     };

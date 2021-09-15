@@ -30,6 +30,7 @@ function DropDown() {
         <AltDropDownListItem title="Home" href="/" />
         <AltDropDownListItem title="3v3" href="#App" />
         <AltDropDownListItem title="2v2" href="#twos" />
+        <AltDropDownListItem title="5v5" href="#footer" />
         </>
         }
       </div>

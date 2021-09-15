@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Robdog.css";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
-import { diff, addedDiff, deletedDiff, updatedDiff, detailedDiff } from 'deep-object-diff';
-
 
 function Robdog({character}) {
 
