@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./AddonItem.css";
 import SmoothCollapse from "react-smooth-collapse";
 import { motion } from "framer-motion";
+import $ from "jquery";
 
 
 function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, last }) {
@@ -51,7 +52,7 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
       </a>
       {toggle ? (
         <SmoothCollapse expanded={true} heightTransition="0.6s ease">
-          <motion.div whileHover={{scale: 1.07}} transition={{duration: 0.45}} className="card mb-3">
+          <motion.div whileHover={{scale: 1.055}} transition={{duration: 0.45}} className="card mb-3">
             <img className="card-img-top" src={imgSrc} alt={alt} />
             <div className="card-body">
               <h2 className="card-title addon-title">{addonTitle}</h2>
