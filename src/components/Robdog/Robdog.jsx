@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Robdog.css";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
+import Cutoffs from "../Cutoffs/Cutoffs";
 
 function Robdog({character}) {
 
@@ -20,7 +21,8 @@ function Robdog({character}) {
   const [robdog5v5Team, setRobdog5v5Team] = useState(undefined);
   const [isFetching, setIsFetching] = useState(false);
   const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
-  const [threesCutOff, setThreesCutOff] = useState(0);
+  const [endOfSeasonInfo, setEndOfSeasonInfo] = useState(undefined);
+  const [rankOneRange, setRankOneRange] = useState(false);
 
   let listOfSidebarContent = ["3v3", "2v2", "5v5"];
 
@@ -96,18 +98,35 @@ function Robdog({character}) {
       let response = await fetch(`https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-reward/index?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`)
       return await response.json()
     }
-    if (threesCutOff === 0) {
+    if (endOfSeasonInfo === undefined) {
       fetcher()
-      .then(res => setThreesCutOff(res.rewards[5].rating_cutoff));
+      .then(res => setEndOfSeasonInfo(res.rewards));
     }
   }, [])
+    
+  let threesR1Cutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[5].rating_cutoff;
+  let twosR1Cutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[0].rating_cutoff;
+  let fivesR1Cutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[10].rating_cutoff;
+  let rankOneCutoffs = [twosR1Cutoff, threesR1Cutoff, fivesR1Cutoff];
 
+  let threesGladCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[6].rating_cutoff;
+  let twosGladCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[1].rating_cutoff;
+  let fivesGladCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[11].rating_cutoff;
+  let gladCutoffs = [twosGladCutoff, threesGladCutoff, fivesGladCutoff];
+
+  let threesDuelistCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[7].rating_cutoff;
+  let twosDuelistCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[2].rating_cutoff;
+  let fivesDuelistCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[12].rating_cutoff;
+  let duelistCutoffs = [twosDuelistCutoff, threesDuelistCutoff, fivesDuelistCutoff];
+
+
+  let teamRatings = [robdog2v2Team !== undefined ? robdog2v2Team.rating : "", robdog3v3Team !== undefined ? robdog3v3Team.rating : "", robdog5v5Team !== undefined ? robdog5v5Team.rating : ""]
+  // find what title im going to get throughout all 3 brackets and highlight which one ill be getting
   return (
           <div style={{"paddingTop": "5rem"}}>
-              <span style={{"display":"block"}} className="addon-title">Original 3s r1 cutoff: 2708</span>
-              <span className="addon-title">Current 3s r1 cutoff: {threesCutOff} </span>
-              <h1 className="rob-addon">{character}'s Active Teams</h1>
-              <ArenaTeam robdog2v2Team={robdog2v2Team} robdog3v3Team={robdog3v3Team} robdog5v5Team={robdog5v5Team} robCharacter={character}/>
+            <Cutoffs rankOne={rankOneCutoffs} glad={gladCutoffs} duelist={duelistCutoffs} teamRatings={teamRatings}/>
+            <h1 className="rob-addon">{character}'s Active Teams</h1>
+            <ArenaTeam robdog2v2Team={robdog2v2Team} robdog3v3Team={robdog3v3Team} robdog5v5Team={robdog5v5Team} robCharacter={character}/>
           </div>
           )
   }

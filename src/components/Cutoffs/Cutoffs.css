@@ -1,0 +1,69 @@
+.arena-cutoffs {
+  max-width: 55%;
+  padding-bottom: 1rem;
+}
+.cutoffs {
+  color: var(--text-color-inset-primary);
+  text-shadow: var(--text-visibility);
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+}
+
+.card-group .card {
+  background: var(--main-bg-color-light);
+}
+
+.card.arena-title {
+  background: var(--main-bg-color);
+  color: var(--text-color-inset-primary);
+  border: none;
+}
+
+.card-body .card-content {
+  color: var(--text-color-inset-primary);
+}
+
+.brackets {
+  padding-bottom: 0.2rem;
+}
+
+.cutoff-content {
+  background: var(--main-bg-color-light);
+  color: var(--text-color-inset-primary);
+  font-size: 19px;
+}
+.cutoff-title {
+  background: var(--main-bg-color);
+  color: var(--text-color-inset-primary);
+}
+
+.cutoff-title,
+.cutoff-content {
+  border: 1px solid black;
+  min-height: 3rem;
+  padding-top: 0.5rem;
+}
+
+.arena-cutoffs {
+  max-height: 10rem;
+}
+
+.arena-cutoffs.row {
+  height: 10rem;
+}
+
+.cutoff-table {
+  margin: 0 auto;
+  width: 50%;
+  height: 14rem;
+}
+
+.cutoff-table td {
+  background: var(--main-bg-color-light);
+  color: var(--text-color-inset-primary);
+}
+
+.cutoff-table th {
+  background: var(--main-bg-color-inset);
+  color: var(--text-color-inset-primary);
+}

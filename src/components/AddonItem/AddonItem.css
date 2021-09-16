@@ -72,7 +72,7 @@ a:not([href]).collapsible:hover {
   opacity: 1;
 }
 
-.card-body {
+.homeView .card-body {
   text-shadow: var(--text-visibility);
   text-align: center;
   background-color: var(--main-bg-color);
@@ -80,7 +80,7 @@ a:not([href]).collapsible:hover {
   border-bottom-left-radius: 25px;
 }
 
-.card img {
+.homeView .card img {
   background: rgb(13, 16, 19);
   background: -moz-linear-gradient(
     90deg,
@@ -110,7 +110,7 @@ a:not([href]).collapsible:hover {
   object-position: center;
 }
 
-.card {
+.homeView .card {
   border-radius: 25px;
   width: 650px;
   margin: 0 auto;
@@ -150,11 +150,11 @@ a:not([href]).collapsible:hover {
 }
 
 @media only screen and (max-width: 1199px) {
-  .card {
+  .homeView .card {
     width: 510px;
     height: 400px;
   }
-  .card img {
+  .homeView .card img {
     width: 508px;
   }
   .addon-link {
@@ -163,11 +163,11 @@ a:not([href]).collapsible:hover {
 }
 
 @media only screen and (max-width: 730px) {
-  .card {
+  .homeView .card {
     width: 350px;
     height: 450px;
   }
-  .card img {
+  .homeView .card img {
     width: 348px;
   }
   .addon-link {
