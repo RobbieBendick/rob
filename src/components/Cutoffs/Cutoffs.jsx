@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {motion} from "framer-motion";
 import "./Cutoffs.css";
 
 function Cutoffs({rankOne, glad, duelist, teamRatings}) {
@@ -8,8 +9,6 @@ function Cutoffs({rankOne, glad, duelist, teamRatings}) {
         let r1Twos = false;
         let r1Threes = false;
         let r1Fives = false;
-
-
         if(title === "Rank One") {
             for (let i = 0; i < rankOne.length; i++) {
                 if(teamRatings[i] >= rankOne[i]){
@@ -28,7 +27,7 @@ function Cutoffs({rankOne, glad, duelist, teamRatings}) {
             }
         }
         return(
-            <tr >
+            <tr>
                 <td className={`${r1 && "robdog-border"}`}>{title}</td>
                 <td className={`${r1Twos && "robdog-border"}`}>{twos}</td>
                 <td className={`${r1Threes && "robdog-border"}`}>{threes}</td>
@@ -39,8 +38,7 @@ function Cutoffs({rankOne, glad, duelist, teamRatings}) {
     
     return (
 
-        <>
-        <button onClick={() => console.log()}></button>
+        <motion.div initial={{"opacity":0}} animate={{"opacity": 1}} transition={{"duration": 0.8}}>
             <h3 className="cutoffs">Arena Cutoffs:</h3>
             <table className="cutoff-table table-hover">
                 <th>Titles</th>
@@ -53,7 +51,7 @@ function Cutoffs({rankOne, glad, duelist, teamRatings}) {
                 <CutoffTableRow title="Duelist" twos={duelist[0]} threes={duelist[1]} fives={duelist[2]} />
                 </tbody>
             </table>
-        </>
+        </motion.div>
     )
 }
 
