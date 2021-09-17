@@ -5,10 +5,31 @@ import "./Cutoffs.css";
 function Cutoffs({rankOne, glad, duelist, teamRatings}) {
 
     function CutoffTableRow({title, twos, threes, fives}) {
-        let r1 = false;
-        let r1Twos = false;
-        let r1Threes = false;
-        let r1Fives = false;
+        var titles = {
+            "rankOne": {
+                "r1": false,
+                "r1Twos": false,
+                "r1Threes": false,
+                "r1Fives": false,
+            },
+            "gladiator": {
+                "gladiator": false,
+                "gladiatorTwos": false,
+                "gladiatorThrees": false,
+                "gladiatorFives": false,
+            },
+            "duelist": {
+                "duel": false,
+                "duelTwos": false,
+                "duelThrees": false,
+                "duelFives": false,
+            }
+            
+        }
+        var {r1, r1Twos, r1Threes, r1Fives} = titles.rankOne;
+        var {gladiator, gladiatorTwos, gladiatorThrees, gladiatorFives} = titles.gladiator;
+        var {duel, duelTwos, duelThrees, duelFives} = titles.duelist;
+
         if(title === "Rank One") {
             for (let i = 0; i < rankOne.length; i++) {
                 if(teamRatings[i] >= rankOne[i]){
@@ -21,10 +42,10 @@ function Cutoffs({rankOne, glad, duelist, teamRatings}) {
         }
         return(
             <tr>
-                <td className={`${r1 && "robdog-border"}`}>{title}</td>
-                <td className={`${r1Twos && "robdog-border"}`}>{twos}</td>
-                <td className={`${r1Threes && "robdog-border"}`}>{threes}</td>
-                <td className={`${r1Fives && "robdog-border"}`}>{fives}</td>
+                <td className={`${r1 || gladiator || duel ? "robdog-border" : ""}`}>{title}</td>
+                <td className={`${r1Twos || gladiatorTwos || duelTwos ? "robdog-border" : ""}`}>{twos}</td>
+                <td className={`${r1Threes || gladiatorThrees || duelThrees ? "robdog-border" : ""}`}>{threes}</td>
+                <td className={`${r1Fives || gladiatorFives || duelFives ? "robdog-border" : ""}`}>{fives}</td>
             </tr>
         )
     }
