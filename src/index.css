@@ -42,9 +42,7 @@ hr {
 .sidebar {
   position: fixed;
   min-height: 100vh;
-  background-color: #0e0e0f;
   min-width: 9%;
-  border-right: #ededed 6px;
 }
 
 .sidebar-content {
