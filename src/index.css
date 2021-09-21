@@ -12,7 +12,7 @@ a:hover {
 ul,
 li,
 p {
-  color: #b3b3b3;
+  color: var(--text-color-inset-primary);
 }
 
 hr {
