@@ -68,4 +68,5 @@
 .cutoff-table th {
   background: var(--main-bg-color-inset);
   color: var(--text-color-inset-primary);
+  height: 38px;
 }
