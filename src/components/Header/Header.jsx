@@ -44,10 +44,10 @@ function Header() {
         )}
        {windowSize.width >= 1199 ?
         <div className="nav-container">
-          <NavListItem href="/robdog" title="Main Rogue"/>
+          {/* <NavListItem href="/robdog" title="Main Rogue"/> */}
           <NavListItem href="/soyeonuwu" title="Horde Rogue"/>
-          <NavListItem href="/syp" title="Alliance Mage"/>
-          <NavListItem href="/rbdg" title="Horde Mage"/>
+          {/* <NavListItem href="/syp" title="Alliance Mage"/>
+          <NavListItem href="/rbdg" title="Horde Mage"/> */}
         </div>
         :
         !sideBar &&

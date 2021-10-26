@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Soyeonuwu.css";
 import ArenaTeam from "../ArenaTeam/ArenaTeam";
 import $ from "jquery";
+import Cutoffs from "../Cutoffs/Cutoffs";
 
 function Soyeonuwu({character}) {
+
   const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
   const [wowPlayer2v2Data, setWowPlayer2v2Data] = useState([]);
   const [wowPlayer5v5Data, setWowPlayer5v5Data] = useState([]);
@@ -12,6 +14,7 @@ function Soyeonuwu({character}) {
   const [soyeon5v5Team, setSoyeon5v5Team] = useState(undefined);
   const [isFetching, setIsFetching] = useState(false);
   const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
+  const [endOfSeasonInfo, setEndOfSeasonInfo] = useState(undefined);
 
   let listOfSidebarContent = ["3v3", "2v2", "5v5"];
 
@@ -43,9 +46,9 @@ function Soyeonuwu({character}) {
   })
 
   useEffect(() => {
-    let threesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-leaderboard/3v3?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
-    let twosUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-leaderboard/2v2?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
-    let fivesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/1/pvp-leaderboard/5v5?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
+    let threesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/2/pvp-leaderboard/3v3?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
+    let twosUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/2/pvp-leaderboard/2v2?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
+    let fivesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/2/pvp-leaderboard/5v5?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
     async function myFetch(url){
       setIsFetching(true);
       let response = await fetch(url);
@@ -82,10 +85,37 @@ function Soyeonuwu({character}) {
     findSoyeon(wowPlayer5v5Data, setSoyeon5v5Team);
   }, [wowPlayer3v3Data, wowPlayer2v2Data, wowPlayer5v5Data, character]);
 
+  useEffect(() => {
+    async function fetcher() {
+      let response = await fetch(`https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/2/pvp-reward/index?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`)
+      return await response.json()
+    }
+    if (endOfSeasonInfo === undefined) {
+      fetcher()
+      .then(res => setEndOfSeasonInfo(res.rewards));
+    }
+  }, [])
+    
+  let threesR1Cutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[5].rating_cutoff;
+  let twosR1Cutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[0].rating_cutoff;
+  let fivesR1Cutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[10].rating_cutoff;
+  let rankOneCutoffs = [twosR1Cutoff, threesR1Cutoff, fivesR1Cutoff];
+
+  let threesGladCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[6].rating_cutoff;
+  let twosGladCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[1].rating_cutoff;
+  let fivesGladCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[11].rating_cutoff;
+  let gladCutoffs = [twosGladCutoff, threesGladCutoff, fivesGladCutoff];
+
+  let threesDuelistCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[7].rating_cutoff;
+  let twosDuelistCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[2].rating_cutoff;
+  let fivesDuelistCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[12].rating_cutoff;
+  let duelistCutoffs = [twosDuelistCutoff, threesDuelistCutoff, fivesDuelistCutoff];
+
   return (
           <div style={{"paddingTop": "5rem"}}>
-              <h1 className="rob-addon">{character}'s Active Teams</h1>
-              <ArenaTeam robdog2v2Team={soyeon2v2Team} robdog3v3Team={soyeon3v3Team} robdog5v5Team={soyeon5v5Team} robCharacter={character}/>
+            <Cutoffs rankOne={rankOneCutoffs} glad={gladCutoffs} duelist={duelistCutoffs}/>
+            <h1 className="rob-addon">{character}'s Active Teams</h1>
+            <ArenaTeam robdog2v2Team={soyeon2v2Team} robdog3v3Team={soyeon3v3Team} robdog5v5Team={soyeon5v5Team} robCharacter={character}/>
           </div>
           )
   }

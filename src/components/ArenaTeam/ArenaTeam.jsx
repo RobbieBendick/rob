@@ -92,7 +92,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
 
     const ArenaMember = ({name, rating, played, wins, losses, robdog}) => {
 
-        let winLossRatio = Math.round(wins / played * 100 * 10) / 10;
+        let winLossRatio = played === 0 ? 0 : Math.round(wins / played * 100 * 10) / 10;
         return (
             <tr className={ robdog ? "arena-member robdog-border" : "arena-member"}>
                 <td className={`arena-stats`} >{name}</td>
