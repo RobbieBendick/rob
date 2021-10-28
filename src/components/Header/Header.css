@@ -12,7 +12,9 @@
   margin: 0 15px 0 15px;
   letter-spacing: 15px;
 }
-
+nav > div.nav-container > h5 {
+  padding-right: 2.8rem;
+}
 .nav-rob {
   flex-direction: row;
   width: 15%;

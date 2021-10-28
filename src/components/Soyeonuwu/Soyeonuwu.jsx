@@ -15,6 +15,9 @@ function Soyeonuwu({character}) {
   const [isFetching, setIsFetching] = useState(false);
   const [userScrollingPosition, setUserScrollingPosition] = useState(undefined);
   const [endOfSeasonInfo, setEndOfSeasonInfo] = useState(undefined);
+  const [soyeon3v3Rating, setSoyeon3v3Rating] = useState(undefined);
+  const [soyeon2v2Rating, setSoyeon2v2Rating] = useState(undefined);
+  const [soyeon5v5Rating, setSoyeon5v5Rating] = useState(undefined);;
 
   let listOfSidebarContent = ["3v3", "2v2", "5v5"];
 
@@ -69,20 +72,21 @@ function Soyeonuwu({character}) {
   }, [wowPlayer3v3Data, wowPlayer2v2Data, wowPlayer5v5Data, isFetching]); 
 
   useEffect(() => {
-    const findSoyeon = (table, setTeam) => {
+    const findSoyeon = (table, setTeam, setRating) => {
       for(let i=0; i < table.length; i++){
         if (!('members' in table[i].team)) continue;
         for(let j=0; j < table[i].team.members.length; j++){
           if (table[i].team.members[j].character.name === character) {
             setTeam(table[i]);
+            setRating(table[i].rating);
             break;
           }
         }
       }
     }
-    findSoyeon(wowPlayer2v2Data, setSoyeon2v2Team);
-    findSoyeon(wowPlayer3v3Data, setSoyeon3v3Team);
-    findSoyeon(wowPlayer5v5Data, setSoyeon5v5Team);
+    findSoyeon(wowPlayer2v2Data, setSoyeon2v2Team, setSoyeon2v2Rating);
+    findSoyeon(wowPlayer3v3Data, setSoyeon3v3Team, setSoyeon3v3Rating);
+    findSoyeon(wowPlayer5v5Data, setSoyeon5v5Team, setSoyeon5v5Rating);
   }, [wowPlayer3v3Data, wowPlayer2v2Data, wowPlayer5v5Data, character]);
 
   useEffect(() => {
@@ -95,6 +99,7 @@ function Soyeonuwu({character}) {
       .then(res => setEndOfSeasonInfo(res.rewards));
     }
   }, [])
+
     
   let threesR1Cutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[5].rating_cutoff;
   let twosR1Cutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[0].rating_cutoff;
@@ -111,9 +116,21 @@ function Soyeonuwu({character}) {
   let fivesDuelistCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[12].rating_cutoff;
   let duelistCutoffs = [twosDuelistCutoff, threesDuelistCutoff, fivesDuelistCutoff];
 
+  const ratings = (soyeon2v2Rating || soyeon3v3Rating || soyeon5v5Rating) !== undefined ? [soyeon2v2Rating, soyeon3v3Rating, soyeon5v5Rating] : undefined;
+
+  if (ratings) {
+    if (ratings[0] > duelistCutoffs[0] && ratings[0] < rankOneCutoffs[0]) {
+      $(".cutoff-table td:contains('Gladiator')").parent().addClass("robdog-border")
+    } else if ((ratings[0] > gladCutoffs[0]) || (ratings[1] > gladCutoffs[1]) || (ratings[2] > gladCutoffs[2])) {
+      $(".cutoff-table td:contains('Rank One')").parent().addClass("robdog-border")
+    } else if (ratings[0] < gladCutoffs[0]) {
+      $(".cutoff-table td:contains('Duelist')").parent().addClass("robdog-border")
+    }
+  }
+
   return (
           <div style={{"paddingTop": "5rem"}}>
-            <Cutoffs rankOne={rankOneCutoffs} glad={gladCutoffs} duelist={duelistCutoffs}/>
+            <Cutoffs rankOne={rankOneCutoffs} glad={gladCutoffs} duelist={duelistCutoffs} robTeam/>
             <h1 className="rob-addon">{character}'s Active Teams</h1>
             <ArenaTeam robdog2v2Team={soyeon2v2Team} robdog3v3Team={soyeon3v3Team} robdog5v5Team={soyeon5v5Team} robCharacter={character}/>
           </div>
