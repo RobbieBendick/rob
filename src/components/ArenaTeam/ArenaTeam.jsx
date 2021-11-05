@@ -116,7 +116,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                         <th className="arena-stats tedh">W: {robdog2v2Team.season_match_statistics.won}</th>
                         <th className="arena-stats tedh">L: {robdog2v2Team.season_match_statistics.lost}</th>
                         <th className="arena-stats tedh">Total: {robdog2v2Team.season_match_statistics.played}</th>
-                        <th className="arena-stats tedh">W/L: {Math.round(robdog2v2Team.season_match_statistics.won / robdog2v2Team.season_match_statistics.played * 100 * 10) / 10}%</th>
+                        <th className="arena-stats tedh">W/L: {robdog2v2Team.season_match_statistics.played === 0 ? 0 : Math.round(robdog2v2Team.season_match_statistics.won / robdog2v2Team.season_match_statistics.played * 100 * 10) / 10}%</th>
                         <tbody>
                             {robdog2v2Team.team.members.map((member, index) => (
                                <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={member.character.name === robCharacter && true}  />
@@ -136,7 +136,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                         <th>W: {robdog3v3Team.season_match_statistics.won}</th>
                         <th>L: {robdog3v3Team.season_match_statistics.lost}</th>
                         <th>Total: {robdog3v3Team.season_match_statistics.played}</th>
-                        <th>W/L: {Math.round(robdog3v3Team.season_match_statistics.won / robdog3v3Team.season_match_statistics.played * 100 * 10) / 10}%</th>
+                        <th>W/L: {robdog3v3Team.season_match_statistics.played === 0 ? 0 : Math.round(robdog3v3Team.season_match_statistics.won / robdog3v3Team.season_match_statistics.played * 100 * 10) / 10}%</th>
                         <tbody>
                             {robdog3v3Team.team.members.map((member, index) => (
                                 <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={member.character.name === robCharacter && true}  />
