@@ -74,12 +74,6 @@ th {
   border: 2px solid var(--main-bg-color);
 }
 
-.rank {
-  padding-bottom: 0.8rem;
-  font-weight: bold;
-  font-size: 20px;
-}
-
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid var(--main-bg-color); /* Blue */

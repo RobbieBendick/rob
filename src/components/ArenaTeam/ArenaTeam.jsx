@@ -106,26 +106,6 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
     }
     return (
        <div className="unavailable">
-            {robdog3v3Team === undefined ? <div className="loader"></div> : 
-            <section id="3v3">
-                <span className="text">rank: {robdog3v3Team.rank} (3v3)</span>
-                <motion.div initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 0.8}} className="table-container" id="threes">
-                    <table className="arena-table table-hover">
-                        <th>{robdog3v3Team.team.name}</th>
-                        <th>Team Rating: {robdog3v3Team.rating}</th>
-                        <th>W: {robdog3v3Team.season_match_statistics.won}</th>
-                        <th>L: {robdog3v3Team.season_match_statistics.lost}</th>
-                        <th>Total: {robdog3v3Team.season_match_statistics.played}</th>
-                        <th>W/L: {Math.round(robdog3v3Team.season_match_statistics.won / robdog3v3Team.season_match_statistics.played * 100 * 10) / 10}%</th>
-                        <tbody>
-                            {robdog3v3Team.team.members.map((member, index) => (
-                                <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={member.character.name === robCharacter && true}  />
-                            ))}
-                        </tbody>
-                    </table>
-                </motion.div>
-            </section>}
-            <hr id="twos"/>
             {robdog2v2Team === undefined ? <div style={{"marginTop": "10rem", "paddingBottom": "2rem"}} className="loader"></div> :
             <section id="2v2">
                 <span className="text" style={{"marginTop": "10rem"}}>rank: {robdog2v2Team.rank} (2v2)</span>
@@ -140,6 +120,26 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                         <tbody>
                             {robdog2v2Team.team.members.map((member, index) => (
                                <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={member.character.name === robCharacter && true}  />
+                            ))}
+                        </tbody>
+                    </table>
+                </motion.div>
+            </section>}
+            <hr id="twos"/>
+            {robdog3v3Team === undefined ? <div className="loader"></div> : 
+            <section id="3v3">
+                <span className="text">rank: {robdog3v3Team.rank} (3v3)</span>
+                <motion.div initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 0.8}} className="table-container" id="threes">
+                    <table className="arena-table table-hover">
+                        <th>{robdog3v3Team.team.name}</th>
+                        <th>Team Rating: {robdog3v3Team.rating}</th>
+                        <th>W: {robdog3v3Team.season_match_statistics.won}</th>
+                        <th>L: {robdog3v3Team.season_match_statistics.lost}</th>
+                        <th>Total: {robdog3v3Team.season_match_statistics.played}</th>
+                        <th>W/L: {Math.round(robdog3v3Team.season_match_statistics.won / robdog3v3Team.season_match_statistics.played * 100 * 10) / 10}%</th>
+                        <tbody>
+                            {robdog3v3Team.team.members.map((member, index) => (
+                                <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={member.character.name === robCharacter && true}  />
                             ))}
                         </tbody>
                     </table>

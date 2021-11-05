@@ -49,8 +49,8 @@ function Soyeonuwu({character}) {
   })
 
   useEffect(() => {
-    let threesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/2/pvp-leaderboard/3v3?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
     let twosUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/2/pvp-leaderboard/2v2?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
+    let threesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/2/pvp-leaderboard/3v3?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
     let fivesUrl = `https://us.api.blizzard.com/data/wow/pvp-region/1/pvp-season/2/pvp-leaderboard/5v5?namespace=dynamic-classic-us&locale=en_US&access_token=${process.env.REACT_APP_TOKEN}`;
     async function myFetch(url){
       setIsFetching(true);
@@ -115,18 +115,28 @@ function Soyeonuwu({character}) {
   let twosDuelistCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[2].rating_cutoff;
   let fivesDuelistCutoff = endOfSeasonInfo !== undefined && endOfSeasonInfo[12].rating_cutoff;
   let duelistCutoffs = [twosDuelistCutoff, threesDuelistCutoff, fivesDuelistCutoff];
-
   const ratings = (soyeon2v2Rating || soyeon3v3Rating || soyeon5v5Rating) !== undefined ? [soyeon2v2Rating, soyeon3v3Rating, soyeon5v5Rating] : undefined;
-
+  let r1 = false;
   if (ratings) {
     if (ratings[0] > duelistCutoffs[0] && ratings[0] < rankOneCutoffs[0]) {
       $(".cutoff-table td:contains('Gladiator')").parent().addClass("robdog-border")
     } else if ((ratings[0] > gladCutoffs[0]) || (ratings[1] > gladCutoffs[1]) || (ratings[2] > gladCutoffs[2])) {
       $(".cutoff-table td:contains('Rank One')").parent().addClass("robdog-border")
+      r1 = true;
     } else if (ratings[0] < gladCutoffs[0]) {
       $(".cutoff-table td:contains('Duelist')").parent().addClass("robdog-border")
     }
-  }
+    if (r1) {
+      if(ratings[0] > gladCutoffs[0]) {
+        //Cutoff Highlight
+        $("#App > div:nth-child(3) > div:nth-child(1) > div > table > tbody > tr.rankz > td:nth-child(2)").attr("style", "border: 2.2px solid #107cad !important")
+        //Table Highlight
+        $("#divider > table").attr("style", "border: 2.3px solid #107cad !important")
+      }
+    }
+    
+
+  } 
 
   return (
           <div style={{"paddingTop": "5rem"}}>

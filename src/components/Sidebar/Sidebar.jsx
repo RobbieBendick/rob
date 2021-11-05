@@ -21,8 +21,8 @@ function Sidebar() {
           </>
           :
           <>
-          <AltListItem title="3v3 team" href="App"/>
-          <AltListItem title="2v2 team" href="twos"/>
+          <AltListItem title="2v2 team" href="App"/>
+          <AltListItem title="3v3 team" href="twos"/>
           <AltListItem title="5v5 team" href="fives"/>
           </>}
         </ul>
@@ -40,6 +40,7 @@ function AltListItem({ title, href }) {
     if (!title.split(" ")[0] === "3v3" || "2v2" || "5v5"){
       // if the first word of the title is 3v3 or 2v2 or 5v5
       newAddonTitle = title.split(" ")[0];
+      console.log(title, newAddonTitle);
     }
 
   }
