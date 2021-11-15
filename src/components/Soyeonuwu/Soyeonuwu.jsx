@@ -5,6 +5,10 @@ import $ from "jquery";
 import Cutoffs from "../Cutoffs/Cutoffs";
 
 function Soyeonuwu({character}) {
+  useEffect(() => {
+    document.title = `${character}'s Arena Teams`
+  }, [])
+
 
   const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
   const [wowPlayer2v2Data, setWowPlayer2v2Data] = useState([]);
@@ -137,7 +141,7 @@ function Soyeonuwu({character}) {
         $("tr.rankz > td:nth-child(3)").attr("style", border)
         // 3v3 table highlight
         $("#threes > table").attr("style", border)
-    } else if (ratings[2] > gladCutoffs[2]) { // 5s r1
+      } else if (ratings[2] > gladCutoffs[2]) { // 5s r1
         // 5v5 r1 cutoff highlight
         $("tr.rankz > td:nth-child(4)").attr("style", border)
         // 5v5 table highlight

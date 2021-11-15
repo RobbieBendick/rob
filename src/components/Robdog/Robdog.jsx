@@ -5,13 +5,9 @@ import $ from "jquery";
 import Cutoffs from "../Cutoffs/Cutoffs";
 
 function Robdog({character}) {
-
-// check ladder for my team and store it
-// after api resets, store the new api call and check if its the same.
-// if new api call and old data arent the same, store the differences
-// replace old team with new team
-// reset every day
-
+  useEffect(() => {
+    document.title = `${character}'s Arena Teams`
+  }, [])
 
   const [wowPlayer3v3Data, setWowPlayer3v3Data] = useState([]);
   const [wowPlayer2v2Data, setWowPlayer2v2Data] = useState([]);

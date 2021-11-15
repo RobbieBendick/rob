@@ -8,11 +8,8 @@ function Home() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
-
-  useEffect(() => {
     document.title = "Mageiden";
-  });
+  }, [])
 
   const windowSize = useWindowSize();
   const [userScrollingPosition, setUserScrollingPosition] = useState("ArenaMarker");
@@ -34,14 +31,10 @@ function Home() {
   const sections = document.querySelectorAll("section")
   const observer = new IntersectionObserver(function (entries, observer) {
     entries.forEach(entry => {
-      if(!entry.isIntersecting) {
-        return;
-      }
-      if (!entry.target.id) {
-        return;
-      }
+      if(!entry.isIntersecting) return
+      if(!entry.target.id) return
       setUserScrollingPosition(entry.target.id);
-      observer.unobserve(entry.target)
+      observer.unobserve(entry.target);
     });
   }, options);
 
