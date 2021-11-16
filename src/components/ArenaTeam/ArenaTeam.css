@@ -55,6 +55,18 @@ section,
 .arena-table {
 }
 
+#\33 v3 {
+  min-height: 27rem;
+}
+
+#\33 v3 > #threes {
+  min-height: 27rem;
+}
+
+#\33 v3 > #threes > table {
+  min-height: 27rem;
+}
+
 .robdog-border {
   border: rgb(22, 48, 65) 2.1px solid !important;
 }
@@ -66,7 +78,6 @@ section,
 th {
   background-color: var(--main-bg-color-inset);
   vertical-align: middle;
-  line-height: 12px;
 }
 
 td,
