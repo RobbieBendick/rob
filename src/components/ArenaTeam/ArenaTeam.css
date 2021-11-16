@@ -56,15 +56,21 @@ section,
 }
 
 #\33 v3 {
-  min-height: 27rem;
+  height: auto;
 }
 
 #\33 v3 > #threes {
-  min-height: 27rem;
+  height: auto;
 }
 
 #\33 v3 > #threes > table {
-  min-height: 27rem;
+  max-height: 22rem;
+  min-height: 22rem;
+}
+
+#\33 v3 > #threes > .bigger-table {
+  max-height: 28rem;
+  min-height: 28rem;
 }
 
 .robdog-border {

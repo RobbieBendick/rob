@@ -106,11 +106,11 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
     }
     return (
        <div className="unavailable">
-            {robdog2v2Team === undefined ? <div style={{"marginTop": "10rem", "paddingBottom": "2rem"}} className="loader"></div> :
+            {!robdog2v2Team ? <div style={{"marginTop": "10rem", "paddingBottom": "2rem"}} className="loader"></div> :
             <section id="2v2">
                 <span className="text" style={{"marginTop": "10rem"}}>rank: {robdog2v2Team.rank} (2v2)</span>
                 <motion.div className="table-container" id="divider"  initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
-                    <table className="arena-table table-hover">
+                    <table className={`arena-table table-hover`}>
                         <th className="arena-stats tedh">{robdog2v2Team.team.name}</th>
                         <th className="arena-stats tedh">Team Rating: {robdog2v2Team.rating}</th>
                         <th className="arena-stats tedh">W: {robdog2v2Team.season_match_statistics.won}</th>
@@ -126,11 +126,11 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                 </motion.div>
             </section>}
             <hr id="twos"/>
-            {robdog3v3Team === undefined ? <div className="loader"></div> : 
+            {!robdog3v3Team ? <div className="loader"></div> : 
             <section id="3v3">
                 <span className="text">rank: {robdog3v3Team.rank} (3v3)</span>
-                <motion.div initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 0.8}} className="table-container" id="threes">
-                    <table className="arena-table table-hover">
+                <motion.div initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 0.8}} className={`table-container`} id="threes">
+                    <table className={`arena-table table-hover ${robdog3v3Team.team.members.length >= 4 ? "bigger-table" : ""}`}>
                         <th>{robdog3v3Team.team.name}</th>
                         <th>Team Rating: {robdog3v3Team.rating}</th>
                         <th>W: {robdog3v3Team.season_match_statistics.won}</th>
@@ -146,7 +146,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                 </motion.div>
             </section>}
             <hr id="fives"/>
-            {robdog5v5Team === undefined ? <div style={{"marginTop": "10rem", "paddingBottom": "2rem"}} className="loader"></div> :
+            {!robdog5v5Team ? <div style={{"marginTop": "10rem", "paddingBottom": "2rem"}} className="loader"></div> :
             <section id="5v5">
                 <span className="text" style={{"marginTop": "10rem"}}>rank: {robdog5v5Team.rank} (5v5)</span>
                 <motion.div className="table-container" id="five" initial={{"opacity": 0}} animate={{"opacity":1}} transition={{"duration": 1}}>
