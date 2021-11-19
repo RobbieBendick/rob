@@ -156,7 +156,7 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
                         <th className="arena-stats tedh">W: {robdog5v5Team.season_match_statistics.won}</th>
                         <th className="arena-stats tedh">L: {robdog5v5Team.season_match_statistics.lost}</th>
                         <th className="arena-stats tedh">Total: {robdog5v5Team.season_match_statistics.played}</th>
-                        <th className="arena-stats tedh">W/L: {Math.round(robdog5v5Team.season_match_statistics.won / robdog5v5Team.season_match_statistics.played * 100 * 10) / 10}%</th>
+                        <th className="arena-stats tedh">W/L: {robdog5v5Team.season_match_statistics.played === 0 ? 0 : Math.round(robdog5v5Team.season_match_statistics.won / robdog5v5Team.season_match_statistics.played * 100 * 10) / 10}%</th>
                         <tbody>
                             {robdog5v5Team.team.members.map((member, index) => (
                               <ArenaMember key={index} name={member.character.name} rating={member.rating} played={member.season_match_statistics.played} wins={member.season_match_statistics.won} losses={member.season_match_statistics.lost} robdog={member.character.name === robCharacter && true}  />
