@@ -72,19 +72,6 @@ a:not([href]).collapsible:hover {
   opacity: 1;
 }
 
-.card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  box-shadow: 0 0.5rem 1rem -0.25em rgb(0, 0, 0, 1);
-  transition: opacity 1s ease;
-  border-radius: 25px;
-}
-.card:hover::after {
-  opacity: 1;
-}
-
 .homeView .card-body {
   text-shadow: var(--text-visibility);
   text-align: center;
@@ -127,9 +114,15 @@ a:not([href]).collapsible:hover {
   border-radius: 25px;
   width: 650px;
   margin: 0 auto;
-  background: gray;
+  background-color: var(--main-bg-color);
   margin: 50px auto 50px auto;
   height: 420px;
+  transition: box-shadow 1s ease;
+}
+
+.card:hover {
+  -webkit-box-shadow: 0 0.5rem 1rem -0.25em rgb(0 0 0 / 0.7);
+  box-shadow: 0 0.5rem 1rem -0.25em rgb(0, 0, 0, 0.7);
 }
 
 .addon-title-popup {
