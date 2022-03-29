@@ -72,6 +72,19 @@ a:not([href]).collapsible:hover {
   opacity: 1;
 }
 
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  box-shadow: 0 0.5rem 1rem -0.25em rgb(0, 0, 0, 1);
+  transition: opacity 1s ease;
+  border-radius: 25px;
+}
+.card:hover::after {
+  opacity: 1;
+}
+
 .homeView .card-body {
   text-shadow: var(--text-visibility);
   text-align: center;
@@ -105,7 +118,7 @@ a:not([href]).collapsible:hover {
   background-size: cover;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
-  height: 12rem;
+  height: 13rem;
   object-fit: scale-down;
   object-position: center;
 }
