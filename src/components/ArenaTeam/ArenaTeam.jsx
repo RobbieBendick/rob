@@ -9,11 +9,9 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
     const removeHash = () => window.history.pushState("", document.title, `${window.location.pathname}${window.location.search}`);
     if (window.location.hash !== "") removeHash();
 
-
     // remove arena team categories that dont show up
-    $(window).on('load', () => {
-        setTimeout(removeLoader, 10*1000); //wait for page load PLUS 10 seconds.
-    });
+    $(window).on('load', () => setTimeout(removeLoader, 8*1000)); //wait for page load PLUS 8 seconds.
+
     const removeLoader = () => {
         $( ".loader" ).fadeOut(500, () => {
             // fadeOut complete. Remove the loading div
@@ -91,7 +89,6 @@ function ArenaTeam({robdog3v3Team, robdog2v2Team, robdog5v5Team, robCharacter}) 
     };
 
     const ArenaMember = ({name, rating, played, wins, losses, robdog}) => {
-
         let winLossRatio = played === 0 ? 0 : Math.round(wins / played * 100 * 10) / 10;
         return (
             <tr className={ robdog ? "arena-member robdog-border" : "arena-member"}>
