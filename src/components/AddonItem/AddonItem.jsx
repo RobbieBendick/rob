@@ -67,9 +67,9 @@ function AddonItem({ addonTitle, imgSrc, addonSrc, alt, addonDescription, id, la
           <div className="card mb-3">
             <img className="card-img-top" src={imgSrc} alt={alt} />
             <div className="card-body">
-            <h2 className="card-title addon-title">{addonTitle}</h2>
-            <p className="addon-description">{addonDescription}</p>
-            <a target="_blank" rel="noopener noreferrer" href={addonSrc} className="addon-link">Grab the addon!</a>
+              <h2 className="card-title addon-title">{addonTitle}</h2>
+              <p className="addon-description">{addonDescription}</p>
+              <a target="_blank" rel="noopener noreferrer" href={addonSrc} className="addon-link">Grab the addon!</a>
             </div>
           </div>
           {!last && <hr id={hr} />}

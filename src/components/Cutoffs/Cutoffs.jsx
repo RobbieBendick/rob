@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from "react";
 import {motion} from "framer-motion";
 import "./Cutoffs.css";
+import classNames from "classnames";
+import $ from "jquery";
 
-function Cutoffs({rankOne, glad, duelist, robTeams}) {
-    //robTeams[0] >= rankOne[0] 
-    let r1 = false;
-    let duel = false;
-    let gladiator = false;
-
-    // for(let i = 0; i < 3; i++) {
-    //     // robTeams = [2sRating, 3sRating, 5sRating]
-    //     // rankOne = [2scutoff, 3scutoff, 5scutoff]
-    //     // robTeams[1] >= 2scutoff[1, 2,3?]
-    //     for(let j = 0; j < 3; j++){
-    //         if( robTeams[i] >= rankOne[j] )
-    //     }
-
-    // }
+function Cutoffs({rankOne, glad, duelist, robTeams, isR1InTwos}) {
 
     function CutoffTableRow({title, twos, threes, fives}) {
         let newTitle = title.split(" ")[0].toLowerCase() + "z"
         return(
-            <tr className={newTitle}>
+            <tr className={newTitle === "gladiatorz" ? isR1InTwos ? "gladiatorz robdog-border" : "" : ""}>
                 <td>{title}</td>
                 <td>{twos}</td>
                 <td>{threes}</td>

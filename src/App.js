@@ -9,6 +9,7 @@ import Rbdg from "./components/Rbdg/Rbdg";
 import Soyeonuwu from "./components/Soyeonuwu/Soyeonuwu";
 import Copyright from "./components/Copyright/Copyright";
 import Robdog from "./components/Robdog/Robdog";
+import Icecoffie from "./components/Icecoffie/Icecoffie";
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/rbdg" render={(props) => <Rbdg {...props} character="Rbdg" />}/>
           <Route path="/soyeonuwu" render={(props) => <Soyeonuwu {...props} character="Soyeonuwu" />}/>
           <Route path="/robdog" render={(props) => <Robdog {...props} character="Robdog" />}/>
+          <Route path="/icecoffie" render={(props) => <Icecoffie {...props} character="Icecoffie" />}/>
         </Switch>
         <Copyright />
       </div>

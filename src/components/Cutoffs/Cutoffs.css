@@ -36,7 +36,9 @@
   background: var(--main-bg-color);
   color: var(--text-color-inset-primary);
 }
-
+.robdog-border {
+  border: rgb(22, 48, 65) 2.1px solid !important;
+}
 .cutoff-title,
 .cutoff-content {
   border: 1px solid black;
