@@ -21,7 +21,7 @@ function Cutoffs({rankOne, glad, duelist, robTeams, isR1InTwos}) {
     return (
 
         <motion.div initial={{"opacity":0}} animate={{"opacity": 1}} transition={{"duration": 0.8}}>
-            <h3 className="cutoffs">Arena Cutoffs:</h3>
+            <h3 className="cutoffs">Arena Cutoffs</h3>
             <div className="arena-cutoff-table-container">
                 <table className="cutoff-table table-hover">
                     <th>Titles</th>
